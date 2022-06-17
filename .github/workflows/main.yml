@@ -15,7 +15,7 @@ jobs:
           node-version: '16.x'
       - name: Build
         env:
-          ntapi: ${{ secrets.API }}
+          api: ${{ secrets.API }}
         run: |
           npm ci
           npm run build
