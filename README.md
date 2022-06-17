@@ -1,7 +1,7 @@
 Springboard from the [OpenAPI Boilerplate](https://github.com/dgarcia360/openapi-boilerplate)
 
 # How to visualize the API online?
-https://neurotrack.github.io/apispec/
+https://satchid.github.io/openapi-spec/
 
 # How to visualize the API locally?
 When you're working on some changes, you may want to see your changes before you create the Pull Request. Here are the steps for it:
