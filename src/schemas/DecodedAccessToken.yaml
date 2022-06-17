@@ -1,0 +1,42 @@
+type: object
+properties:
+  username:
+    type: string
+    description: "User UUID"
+    example: "499aab8a-0a8d-4154-9bf6-3fc1f8888bf6"
+  sub:
+    type: string
+    description: "The sub claim is a unique identifier (UUID) for the authenticated user. It is not the same as the user name."
+    example: "b2bec1d6-b29b-4373-b2aa-8a5bd14f8df1"
+  token_use:
+    type: string
+    description: "The token_use claim describes the intended purpose of this token. Its value is always access in the case of the access token."
+    example: "access"
+  scope:
+    type: string
+    description: "The scope claim is a list of Oauth 2.0 scopes that define what access the token provides."
+    example: "aws.cognito.signin.user.admin"
+  auth_time:
+    type: number
+    description: "The auth_time claim contains the time when the authentication occurred. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format. On refreshes, it represents the time when the original authentication occurred, not the time when the token was issued."
+    example: 1633445008
+  iss:
+    type: string
+    description: "Issuer of the token. Identifies the User Pool that created the token"
+    example: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_1hxwqLmbh"
+  exp:
+    type: number
+    description: "Expiration time. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format"
+    example: 1633445308
+  iat:
+    type: number
+    description: "Issued At time. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format"
+    example: 1633445009
+  jti:
+    type: string
+    description: "The jti claim is the unique identifier of the JWT."
+    example: "b3f8a4ab-9406-41b8-8e0f-dfd204d68339"
+  client_id:
+    type: string
+    description: "preregistered client ID in the user pool."
+    example: "6qigcaa93bteq8br3me7gmho3r"

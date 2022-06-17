@@ -1,0 +1,65 @@
+post:
+  security:
+    - bearerAuth: []
+  tags:
+    - medical integration
+  summary: Link organization
+  description: >-
+    Receives a organization payload from a recent created NT Org and sends
+    it to Athena to create an Employer there. Other fields than organization
+    in payload do not matter because won't be used.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            organization:
+              type: string
+              example: sample_organization_name
+  responses:
+    '200':
+      description: "This is an API to be used by another service (queued_updates) asynchronously."
+      content: 
+        application/json:
+          schema:
+            properties:
+              description:
+                type: string
+                example: "sample_description_name"
+              default_language:
+                type: string
+                example: "en or ja"
+              status:
+                type: string
+                example: "ACTIVE"
+              title:
+                type: string
+                example: "sample_title"
+              mailchimp_audience_id:
+                type: string
+                example: null
+              api_url:
+                type: string
+                example: "https://{stage}.dev-neurotrack.io"
+              platform:
+                type: string
+                example: null
+              athena_integration:
+                type: boolean
+                example: true
+              created_at:
+                type: string
+                example: "2022-04-04T15:31:57.798Z"
+              updated_at:
+                type: string
+                example: "2022-04-04T15:31:57.798Z"
+              deleted_at:
+                type: string
+                example: null
+              organization:
+                type: string
+                example: "sample_organization_name"
+              external_organization_code:
+                type: string
+                example: "0001"

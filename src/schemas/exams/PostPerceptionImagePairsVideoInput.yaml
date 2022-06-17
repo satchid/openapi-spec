@@ -1,0 +1,50 @@
+type: object
+description: Before we invoke this endpoint, we need to upload the videos using the video upload endpoint. It will return the file name that should be used as the input data here.
+required:
+  - assessment_id
+  - perceptions
+properties:
+  assessment_id:
+    type: string
+    description: UUID for the Assessment being taken.
+    example: "Assessment-7ad63204-c367-4dcf-9245-e87e08f67b99"
+  perceptions:
+    type: array
+    description: "List of perceptions for all available trials in the assessment. We make just a single Post Perception call including all trials."
+    items:
+      required:
+        - exam_trial_id
+        - trial_start_time
+        - trial_end_time
+        - timeout
+      allOf:
+        - $ref: './BasePerception.yaml'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: For Image Pairs, each trial should have at most one item in this array.
+              items:
+                type: object
+                required:
+                  - type
+                  - value
+                properties:
+                  type:
+                    type: string
+                    description: "Perception type. In this case, it will be VIDEO."
+                    example: VIDEO
+                  value:
+                    type: object
+                    required:
+                      - file
+                      - order
+                    properties:
+                      file:
+                        type: string
+                        description: "File name returned by the upload video endpoint. Different video codec types are supported."
+                        example: "c05620d7-6846-4743-bbd8-5a04e99898c6.mp4"
+                      order:
+                        type: integer
+                        description: "When we need to send multiple video chunks, this attribute indicates the order of each chunk. First item should always be 0."
+                        example: 0

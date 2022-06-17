@@ -1,0 +1,31 @@
+type: object
+properties:
+  phase_display_type:
+    type: string
+    example: INSTRUCTION
+  phase_group:
+    type: string
+    example: PRACTICE
+  phase_name:
+    type: string
+    example: 01_pre_practice_instructions
+  version:
+    type: string
+    example: 1.0.0
+  phase_configuration:
+    type: object
+    properties:
+      accepted_input_types:
+        type: array
+        items:
+          type: string
+        example: []
+      component_data:
+        type: object
+        example: {}
+      requires_perception_data:
+        type: boolean
+        example: false
+      tutorial_mode:
+        type: boolean
+        example: false

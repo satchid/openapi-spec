@@ -1,0 +1,39 @@
+post:
+  tags:
+    - coaching
+  summary: Send articles as coach
+  description: This endpoint let the Guided Path Service to send articles to a user as the coach.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../schemas/coaching/SendArticleInput.yaml'
+  responses:
+    '204':
+      description: "Successful response. Message successfully sent"
+      content:
+        application/json:
+          schema:
+            type: object
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Missing required parameter:
+              value:
+                code: "CO-015"
+                message: "Can't send article as coach"
+                culprits:
+                  - category: INVALID_REQUEST_DATA
+                    message: "Missing key: 'field_name'"
+            coachee_id is invalid or not inactive:
+              value:
+                code: "CO-015"
+                message: "Can't send article as coach"
+                culprits:
+                  - category: INVALID_REQUEST_DATA
+                    message: "coachee_id is invalid or not inactive"
+    '401':
+      $ref: '../../..//responses/401.yaml'

@@ -1,0 +1,129 @@
+post:
+  tags:
+    - coaching
+  summary: Invite user to coaching
+  description: Invite a user to coaching. This endpoint is meant to be used by Neurotrack admin team and only allows the INVITED status.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            status:
+              $ref: '../../../schemas/coaching/CoachingStatusEnum.yaml'
+  responses:
+    '200':
+      description: "Default"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/coaching/CoachingInfo.yaml'
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            No coach available:
+              value:
+                code: "CO-113"
+                message: "No coaches available for this organization"
+            Invalid Coaching Status:
+              value:
+                code: "CO-107"
+                message: "Invalid Coaching Status"
+            Status not Allowed in this event:
+              value:
+                code: "CO-108"
+                message: "Status is not allowed in this event"
+            Create Sendbird Chatroom error:
+              value:
+                code: "CO-103"
+                message: "Sendbird chat creation error."
+            Create Sendbird User error:
+              value:
+                code: "CO-103"
+                message: "Sendbird user creation error."
+                culprits:
+                  - category: "SENDBIRD_ERROR"
+                    message: "Error occurred with provisioning sendbird user: <exception>"
+                    field: "user_id"
+            Query Database Error:
+              value:
+                code: "E-532"
+                message: "An unexpected error occurred while querying database"
+            Increase number of clients Error:
+              value:
+                code: "E-536"
+                message: "An unexpected error occurred at the Database while updating the item"
+
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'
+
+put:
+  tags:
+    - coaching
+  summary: Modify user's coaching status
+  description: Let an user accept or decline a coaching invite. This endpoint is meant to be used by Neurotrack admin team and only allows the ACTIVE and NOT_YET statuses.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            status:
+              $ref: '../../../schemas/coaching/CoachingStatusEnum.yaml'
+  responses:
+    '200':
+      description: "Default"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/coaching/CoachingInfo.yaml'
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Invalid Coaching Status:
+              value:
+                code: "CO-107"
+                message: "Invalid Coaching Status"
+            Status not Allowed in this event:
+              value:
+                code: "CO-108"
+                message: "Status is not allowed in this event"
+            Create Sendbird Chatroom error:
+              value:
+                code: "CO-103"
+                message: "Sendbird chat creation error."
+            Create Sendbird User error:
+              value:
+                code: "CO-103"
+                message: "Sendbird user creation error."
+                culprits:
+                  - category: "SENDBIRD_ERROR"
+                    message: "Error occurred with provisioning sendbird user: <exception>"
+                    field: "user_id"
+            Query Database Error:
+              value:
+                code: "E-532"
+                message: "An unexpected error occurred while querying database"
+            Increase number of clients Error:
+              value:
+                code: "E-536"
+                message: "An unexpected error occurred at the Database while updating the item"
+            User not invited:
+              value:
+                code: "CO-112"
+                message: "User was not invited to Coaching"
+
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'

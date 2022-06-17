@@ -1,0 +1,16 @@
+type: object
+properties:
+  ASSOCIATIVE_LEARNING:
+    $ref: './AssessmentResult.yaml'
+  ASSOCIATIVE_MEMORY:
+    $ref: './AssessmentResult.yaml'
+  ATTENTION:
+    $ref: './AssessmentResult.yaml'
+  EXECUTIVE_FUNCTION:
+    $ref: './AssessmentResult.yaml'
+  INHIBITION:
+    $ref: './AssessmentResult.yaml'
+  PROCESSING_SPEED:
+    $ref: './AssessmentResult.yaml'
+  GLOBAL_COGNITIVE_SCORE:
+    $ref: './AssessmentResult.yaml'

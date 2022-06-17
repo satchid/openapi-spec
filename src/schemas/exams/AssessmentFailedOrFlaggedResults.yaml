@@ -1,0 +1,34 @@
+type: object
+required:
+  - user_id
+  - assessment_id
+  - category
+  - status
+  - status_reason
+  - perception_started_at
+  - domain
+properties:
+  user_id:
+    type: string
+    example: "7551576a-492f-47d0-8af2-1ce4e6f9a418"
+  assessment_id:
+    type: string
+    example: "Assessment-8d3a5624-7fcb-4100-a9ca-0c285efca68f"
+  assessment_name:
+    type: string
+    example: "Assessment: Image Pairs"
+    description: Only Cognitive Exams would have this attribute filled.
+  category:
+    $ref: './CategoryEnum.yaml'
+  status:
+    $ref: './AssessmentStatusEnum.yaml'
+  status_reason:
+    type: array
+    items:
+      type: string
+      example: "assessment_status_reason_incomplete_generic"
+  perception_started_at:
+    type: string
+    example: "2021-07-29T18:37:24.600Z"
+  domain:
+    $ref: './DomainEnum.yaml'

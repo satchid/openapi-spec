@@ -1,0 +1,17 @@
+type: object
+properties:
+  component_data:
+    type: object
+  accepted_input_types:
+    type: array
+    description: List of input types accepted for that specific phase.
+    items:
+      type: string
+  tutorial_mode:
+    type: boolean
+  requires_perception_data:
+    type: boolean
+  resource_bundle:
+    type: string
+    description: Name of the ZIP file with the exam bundle.
+    example: "ca532680fa0c68d0005f76da93886959.zip"

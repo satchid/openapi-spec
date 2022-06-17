@@ -1,0 +1,8 @@
+type: string
+enum:
+  - NONE
+  - ACTIVE
+  - INVITED
+  - NOT_YET
+example: ACTIVE
+description: Current status of the user in the coaching program

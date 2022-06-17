@@ -1,0 +1,17 @@
+required:
+  - coachee_id
+  - article_url
+  - language
+properties:
+  coachee_id:
+    type: string
+    description: "user_id of the user in the coaching program"
+    example: "402c488a-ce85-44ec-986f-51768fc5bfd5"
+  article_url:
+    type: string
+    description: "URL of the article to be sent. It will be embedded into the translatable message on the coaching service."
+    example: "https://www.example.com"
+  language:
+    type: string
+    description: "language used to send the message"
+    example: "en"

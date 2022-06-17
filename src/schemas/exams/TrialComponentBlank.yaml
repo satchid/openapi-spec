@@ -1,0 +1,21 @@
+title: Blank Trial
+allOf:
+  - $ref: './BaseTrial.yaml'
+  - type: object
+    required:
+      - component
+      - display_seconds
+      - requires_perception_data
+    properties:
+      component:
+        type: string
+        description: Blank component used to add a pause between two trials.
+        example: "blank"
+      display_seconds:
+        type: integer
+        example: 2
+      requires_perception_data:
+        type: boolean
+        description: Indicates we don't need to gather perception for this trial. For Blank Component, it should be False.
+      component_data:
+        type: object

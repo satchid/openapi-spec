@@ -1,0 +1,25 @@
+{
+  "name": "neurotrack-apispec",
+  "version": "0.0.1",
+  "description": "Multi-file API Spec.",
+  "main": "index.js",
+  "scripts": {
+    "build": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi.yaml --type yaml",
+    "build-deref": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi-dereferenced.yaml --type yaml --dereference",
+    "test": "npm run build && spectral lint _build/openapi.yaml",
+    "preview": "npm run build && npx @redocly/openapi-cli preview-docs _build/openapi.yaml",
+    "html": "npm run build && redoc-cli bundle _build/openapi.yaml  --output _build/index.html --options.onlyRequiredInSamples",
+    "clean": "rm -r _build",
+    "deploy": "./ci/deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neurotrack/apispec.git"
+  },
+  "license": "Private",
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "@stoplight/spectral": "^6.1.0",
+    "redoc-cli": "^0.13.16"
+  }
+}

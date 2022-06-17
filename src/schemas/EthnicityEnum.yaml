@@ -1,0 +1,10 @@
+type: string
+nullable: true
+enum:
+  - american_indian
+  - asian
+  - black
+  - hispanic
+  - pacific_islander
+  - white
+example: white

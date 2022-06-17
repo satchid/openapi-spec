@@ -1,0 +1,109 @@
+type: object
+required:
+  - created_at
+  - email
+  - family_name
+  - given_name
+  - id
+  - organization
+  - resource_type
+  - updated_at
+  - user_id
+properties:
+  resource_type:
+    type: string
+    example: "user"
+  user_id:
+    type: string
+    description: Unique identifier for an user.
+    example: "7551576a-492f-47d0-8af2-1ce4e6f9a418"
+  id:
+    type: string
+    description: For backwards compatibility only. We should use user_id instead.
+    example: "7551576a-492f-47d0-8af2-1ce4e6f9a418"
+  organization:
+    type: string
+    description: Organization where the user belongs.
+    example: japan_01
+  sub:
+    type: string
+    description: "Unique identifier at the Authentication solution (AWS Cognito)"
+    example: "28d8bd3e-ccf9-4757-8d25-a344b9c1538e"
+  email:
+    type: string
+    description: User's e-mail
+    example: "foo@example.com"
+  updated_at:
+    type: string
+    description: ISO Date for last time the user record was updated
+    example: "2021-08-25T00:00:00.000Z"
+  created_at:
+    type: string
+    description: ISO Date for the time the user record was created
+    example: "2021-08-25T00:00:00.000Z"
+  first_login_at:
+    type: string
+    nullable: true
+    description: ISO Date for the first time the user logged in the system
+    example: "2021-08-25T00:00:00.000Z"
+  last_login_at:
+    type: string
+    nullable: true
+    description: ISO Date for the last time the user logged in the system
+    example: "2021-08-25T00:00:00.000Z"
+  picture:
+    type: string
+    description: URL for user's profile picture
+    example: "https://www.example.com/my_profile_picture.png"
+  given_name:
+    type: string
+    example: "John"
+  family_name:
+    type: string
+    example: "Smith"
+  timezone:
+    $ref: './TimezoneEnum.yaml'
+  language:
+    $ref: './LanguageEnum.yaml'
+  sex:
+    $ref: './SexEnum.yaml'
+  product_tier:
+    $ref: './ProductTierEnum.yaml'
+  date_of_birth:
+    type: string
+    nullable: true
+    description: Format YYYY-MM-DD
+    example: 1970-01-01
+  accept_tnc:
+    type: boolean
+    nullable: true
+    description: Defines if the user accepted the Terms and Conditions
+  education:
+    $ref: './EducationEnum.yaml'
+  ethnicity:
+    $ref: './EthnicityEnum.yaml'
+  journey_settings:
+    $ref: './JourneySettings.yaml'
+  coaching:
+    anyOf:
+      - $ref: './coaching/Coach.yaml'
+      - $ref: './coaching/Coachee.yaml'
+  external_link:
+    $ref: './ExternalLink.yaml'
+  consents:
+    type: array
+    items:
+      $ref: './Consent.yaml'
+  promo_consent:
+    type: string
+    nullable: true
+    description: Deprecated. Migrated to consents.
+  pii_consent:
+    type: array
+    nullable: true
+    description: Deprecated. Migrated to consents.
+    items:
+      type: string
+  subscription:
+    type: object
+    description: Deprecated. We don't have subscriptions service anymore.

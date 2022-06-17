@@ -1,0 +1,19 @@
+type: object
+required:
+  - sub
+  - given_name
+  - family_name
+  - email
+properties:
+  sub:
+    type: string
+    example: "tVdAcVbsWD9iGuUbWqz1PA=="
+  given_name:
+    type: string
+    example: "John"
+  family_name:
+    type: string
+    example: "Smith"
+  email:
+    type: string
+    example: "john.smith@example.com"

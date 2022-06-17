@@ -1,0 +1,57 @@
+get:
+  tags:
+    - exam serving
+  summary: Get an assessment for the user
+  description: >-
+    Get the content of an specific assessment to show on the user device
+    We use the same endpoint for all exams, so as we document more exams, the real Phases and Trial Components used in a given Exam will be just a subset of what is documented here.
+  parameters:
+    - $ref: '../../../../parameters/path/user_id.yaml'
+    - $ref: '../../../../parameters/path/assessment_id.yaml'
+    - in: header
+      name: Accept-Language
+      # TODO: should be at the top level of our API?
+      description: Language used to translate content.
+      schema:
+        type: string
+        enum:
+          - en
+          - ja
+        default: en
+    - in: query
+      name: translate
+      description: Translate the content if true. Otherwise, returns the translation keys.
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+        default: true
+    - in: query
+      name: trial_phases
+      description: transform trials to trial_phases response
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+        default: false
+    
+  responses:
+    '200':
+      description: "The response is an Assessment Object, but the format depends on the exam type/subtype and the following parameters: translate and trial_phases."
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../schemas/exams/Assessment.yaml'
+          examples:
+            Image Pairs:
+              $ref: './assessment-examples/image-pairs.yaml'
+            Item Price:
+              $ref: './assessment-examples/item-price.yaml'
+    '400': 
+      $ref: '../../../../responses/400.yaml'
+    '401':
+      $ref: '../../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../../responses/404.yaml'

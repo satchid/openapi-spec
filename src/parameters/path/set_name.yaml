@@ -1,0 +1,6 @@
+name: set_name
+required: true
+in: path
+schema:
+  type: string
+description: Name used to uniquely identify the exam set for a specific exam.

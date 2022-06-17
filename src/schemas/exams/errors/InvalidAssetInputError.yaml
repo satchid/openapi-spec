@@ -1,0 +1,46 @@
+type: object
+required:
+  - code
+  - message
+properties:
+  code:
+    type: string
+    example: "EC-010"
+  message:
+    type: string
+    example: Cannot create asset.
+  culprits:
+    type: array
+    items:
+      type: object
+      required:
+        - category
+        - message
+      properties:
+        category:
+          type: string
+          description: Category of the error culprit.
+          example: INVALID_REQUEST_DATA
+        message:
+          type: string
+          description: Human readable error message, but currently not translated to different languages.
+          example: Missing key 'exam_code'
+        field:
+          type: string
+          description: field in the input payload that caused the error.
+          example: exam_code
+        original:
+          type: object
+          description: The original value provided with the request.
+          example: null
+        expected:
+          type: object
+          description: Either a list of valid values or a language agnostic representation of the value needed.
+          example: null
+  extra:
+    type: object
+    description: Extra field to display context information to client.
+  fingerprint:
+    type: string
+    description: A unique ID for this specific failure. Usually the AWS request-Id to help us debug the issue on the server-side.
+    example: "1c724b87-dcf4-4a1e-99e5-f8d21da50d0e"

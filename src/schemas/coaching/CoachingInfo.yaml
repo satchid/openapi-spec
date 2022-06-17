@@ -1,0 +1,38 @@
+required:
+  - status
+  - invited_at
+  - is_coach
+properties:
+  accepted_at:
+    type: string
+    example: "2021-05-25T00:00:00.000Z"
+  assigned_coach:
+    type: object
+    properties:
+      user_id: 
+        type: string
+        example: "user_402c488a_ce85_44ec_986f_51768fc5bfd5"
+      uuid: 
+        type: string
+        example: "402c488a-ce85-44ec-986f-51768fc5bfd5"
+  status:
+    type: string
+    example: ACCEPTED
+  invited_at:
+    type: string
+    example: "2021-05-25T00:00:00.000Z"
+  is_coach:
+    type: boolean
+    example: false
+  chat:
+    type: object
+    properties:
+      user_id:
+        type: string
+        example: "user_402c488a_ce85_44ec_986f_51768fc5bfd5"
+      channel_url:
+        type: string
+        example: "user_402c488a_ce85_44ec_986f_51768fc5bfd5"
+      access_token:
+        type: string
+        example: "token123"

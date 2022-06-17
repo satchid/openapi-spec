@@ -1,0 +1,37 @@
+type: object
+properties:
+  is_coach:
+    type: boolean
+    example: false
+  chat:
+    type: object
+    properties:
+      access_token:
+        type: string
+        example: abcf0dfc9a1814240fb2482acc9fa8faa2c50682
+        description: Access token used to communicate with Sendbird
+      user_id:
+        type: string
+        example: dev_10bb1681_f6bd_4283_a3e0_2bc22b8b9135
+        description: User ID on the sendbird platform. It is composed of the stage and the user_id, replacing hyphens with underscores.
+      channel_url:
+        type: string
+        example: dev_7f1cbdee_c0b5_4e1e_b161_12690811600a
+        description: ID of channel on Sendbird platform where the messages will be sent.
+  status:
+    $ref: './CoachingStatusEnum.yaml'
+  assigned_coach:
+    type: object
+    properties:
+      user_id:
+        type: string
+        example: 6f7d2c79-c034-4929-b8b6-7d1c73b5df31
+        description: User ID of the Coach of the current Coachee.
+  invited_at:
+    type: string
+    example: "2021-08-25T00:00:00.000Z"
+    description: ISO Date when the invitation to the user was sent.
+  accepted_at:
+    type: string
+    example: "2021-08-25T00:00:00.000Z"
+    description: ISO Date when the user accepted the coaching invitation.

@@ -1,0 +1,31 @@
+title: Instructions with only text
+allOf:
+  - $ref: './BaseTrial.yaml'
+  - type: object
+    required:
+      - component
+      - component_data
+    properties:
+      component:
+        type: string
+        description: Instructions Text Only Trial.
+        example: "instructions_text_only"
+      component_data:
+        type: object
+        required:
+          - body
+        properties:
+          body:
+            type: object
+            required:
+              - headline
+              - content
+            properties:
+              headline:
+                $ref: './Label.yaml'
+              content:
+                $ref: './Label.yaml'
+          navigation:
+            type: array
+            items:
+              $ref: './NavigationEnum.yaml'

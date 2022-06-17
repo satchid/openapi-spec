@@ -1,0 +1,18 @@
+properties:
+  chat:
+    type: object
+    properties:
+      user_id:
+        type: string
+        example: "user_402c488a_ce85_44ec_986f_51768fc5bfd5"
+      access_token:
+        type: string
+        example: "token123"
+  created_at:
+    type: string
+    example: "2021-05-25T00:00:00.000Z"
+  is_coach:
+    type: boolean
+    example: true
+  status:
+    $ref: './CoachingStatusEnum.yaml'

@@ -1,0 +1,20 @@
+type: object
+properties:
+  phase_type:
+    type: string
+    example: 01_pre_practice_instructions
+  phase_group:
+    type: string
+    example: PRACTICE
+  platform:
+    type: string
+    example: MOBILE
+  translations:
+    type: object
+    example: {"en": {}}
+  phase:
+    $ref: "./PhaseConfig.yaml"
+  exam_set_trials:
+    type: array
+    items:
+      $ref: "./ExamTrial.yaml"

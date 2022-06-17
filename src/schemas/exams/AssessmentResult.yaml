@@ -1,0 +1,96 @@
+type: object
+required:
+  - user_id
+  - category
+  - category_display_text
+  - domain
+  - domain_display_text
+properties:
+  user_id:
+    type: string
+    example: "7551576a-492f-47d0-8af2-1ce4e6f9a418"
+  category:
+    $ref: './CategoryEnum.yaml'
+  category_display_text:
+    type: string
+    example: "Cognitive"
+    description: "Translable content for category field"
+  domain:
+    $ref: './DomainEnum.yaml'
+  domain_display_text:
+    type: string
+    example: "Associative Memory"
+    description: "Translatable content for domain field"
+  assessment_name:
+    type: string
+    example: "Assessment: Image Pairs"
+    description: Not included for Global Score or lifestyle domains
+  quantile_descriptor_bounds:
+    type: object
+    properties:
+      LOW:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.01
+          - 0.09
+      BELLOW_AVERAGE:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.09
+          - 0.25
+      AVERAGE_ABOVE:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.25
+          - 1.000001
+  status_reason:
+    type: array
+    description: "Translatable list of reasons for assessment failure"
+    items:
+      type: string
+    example:
+      - "Responded 'Yes' too often"
+      - "Responded incorrectly too often on easier trials"
+  results:
+    type: array
+    description: "List of results for the given domain"
+    items:
+      type: object
+      properties:
+        quantile:
+          type: number
+          example: 0.52
+        quantile_display_text:
+          type: string
+          example: "Expected"
+          description: "Translatable bucket name for the given quantile"
+        quantile_descriptor:
+          type: string
+          example: "AVERAGE_ABOVE"
+          enum:
+            - LOW
+            - BELOW_AVERAGE
+            - AVERAGE_ABOVE
+            - POOR
+            - MODERATE
+            - HIGH
+          description: "Quantile descriptor for Cognitive Domains are: LOW, BELOW_AVERAGE or AVERAGE_ABOVE. Lifestyle Domains use POOR, MODERATE, HIGH"
+        raw_score:
+          type: number
+          example: 0.6123
+          description: "User's raw score on the exam"

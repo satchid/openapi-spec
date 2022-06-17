@@ -1,0 +1,21 @@
+type: object
+properties:
+  consent:
+    type: string
+    description: Consent type. There is no validation on the type. We accept whatever was sent by the front-end. the current enum contain just some exmples.
+    enum:
+      - share_scores
+      - promo_consent
+    example: share_scores
+  accept_datetime:
+    type: string
+    description: ISO Date when the user accepted the consent
+    example: "2021-08-25T00:00:00.000Z"
+  version:
+    type: string
+    description: Consent version. There is no validation on the version. We accept whatever was sent by the front-end.
+    example: "v1.0.0"
+  uuid:
+    type: string
+    description: UUID generated to have a unique identifier for the consent.
+    example: 03662e23-085f-4814-a1fb-40e0aa1a61de

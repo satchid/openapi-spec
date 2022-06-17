@@ -1,0 +1,29 @@
+type: object
+required:
+  - id
+  - user_id
+  - status
+  - type
+  - subtype
+  - base_media_url
+  - phases
+properties:
+  id:
+    type: string
+    example: "Assessment-7ad63204-c367-4dcf-9245-e87e08f67b99"
+  user_id:
+    type: string
+    example: "6e9dddd4-516e-46f5-b929-7c572a1b3d63"
+  status:
+    $ref: './AssessmentStatusEnum.yaml'
+  type:
+    $ref: './ExamTypeEnum.yaml'
+  subtype:
+    $ref: './ExamSubTypeEnum.yaml'
+  base_media_url:
+    type: string
+    example: "https://api.dev-neurotrack.io/v1/exam-media"
+  phases:
+    type: array
+    items:
+      $ref: './AssessmentPhase.yaml'

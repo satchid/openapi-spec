@@ -1,0 +1,31 @@
+type: object
+properties:
+  exam_code:
+    type: string
+    example: SYMBOL_DIGITS_ABRIDGED_V1
+  name:
+    type: string
+    example: Paired Symbol Digit Abridged
+  type:
+    type: string
+    example: EXAM_PROCESSING_SPEED
+  subtype:
+    type: string
+    example: PAIRED_SYMBOL_DIGITS_ABRIDGED
+  type_subtype:
+    type: string
+    example: EXAM_PROCESSING_SPEED|PAIRED_SYMBOL_DIGITS_ABRIDGED
+  set_names:
+    type: array
+    items:
+      type: string
+    example: ["set001"]
+  rules:
+    type: object
+  translations:
+    type: object
+    example: {"en": {}}
+  phases:
+    type: array
+    items:
+      $ref: "./PhaseConfig.yaml"

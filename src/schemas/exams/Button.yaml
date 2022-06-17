@@ -1,0 +1,24 @@
+type: object
+required:
+  - action
+  - style
+  - text
+  - value
+properties:
+  action:
+    type: string
+    example: "next"
+  style:
+    type: string
+    example: "solid"
+  text:
+    type: string
+    description: The text inside the button. This content might change according to the Accept-Language parameter in the request header.
+    example: "Let's begin"
+  value:
+    type: string
+    example: "continue"
+  disabled:
+    type: boolean
+    description: A boolean that sets the disabled state for the rendered button when true. The default value in absense should be false.
+    default: false

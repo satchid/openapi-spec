@@ -1,0 +1,6 @@
+type: string
+description: Shows the navigation options available in the current Trial.
+enum:
+  - close
+  - previous
+  - next

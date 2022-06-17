@@ -1,0 +1,18 @@
+type: object
+properties:
+  exam_code:
+    type: string
+    example: SYMBOL_DIGITS_ABRIDGED_V1
+  set_name:
+    type: string
+    example: set001
+  resource_bundle:
+    type: object
+  rules:
+    type: object
+  phases:
+    type: array
+    items:
+      $ref: "./Phase.yaml"
+  exam:
+    $ref: "./Exam.yaml"

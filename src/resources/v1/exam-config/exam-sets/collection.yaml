@@ -1,0 +1,58 @@
+post:
+  tags:
+    - exam config
+  summary: Create exam set
+  description: Creates exam sets and adds it to the exam-config table on DynamoDB.
+  parameters:
+    - $ref: '../../../../parameters/path/exam_id.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            resource_bundle:
+              type: object
+              example: {
+                'bucket': 's3_bucket',
+                'key': 's3_key'
+              }
+            set_number:
+              type: string
+              example: '10'
+            phase_type:
+              type: string
+              example: 'practice'
+            platform:
+              type: string
+              example: 'MOBILE'
+            trials:
+              type: object
+              example: [
+                'order': '0002',
+                'trial_name': 'stimuli_chart.png'
+                ]
+            
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    '400':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../schemas/exams/errors/InvalidExamSetInputError.yaml'
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized

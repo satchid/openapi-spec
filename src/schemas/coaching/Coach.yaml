@@ -1,0 +1,22 @@
+type: object
+properties:
+  is_coach:
+    type: boolean
+    example: true
+  chat:
+    type: object
+    properties:
+      access_token:
+        type: string
+        example: abcf0dfc9a1814240fb2482acc9fa8faa2c50682
+        description: Access token used to communicate with Sendbird
+      user_id:
+        type: string
+        example: dev_10bb1681_f6bd_4283_a3e0_2bc22b8b9135
+        description: User ID on the sendbird platform. It is composed of the stage and the user_id, replacing hyphens with underscores.
+  status:
+    $ref: './CoachingStatusEnum.yaml'
+  created_at:
+    type: string
+    example: "2021-08-25T00:00:00.000Z"
+    description: ISO Date when the user became a Coach.

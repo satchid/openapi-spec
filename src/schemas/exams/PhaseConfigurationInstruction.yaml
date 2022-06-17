@@ -1,0 +1,21 @@
+title: Instruction phase
+allOf:
+  - $ref: './BasePhaseConfiguration.yaml'
+  - type: object
+    required:
+      - accepted_input_types
+      - tutorial_mode
+      - resource_bundle
+      - requires_perception_data
+    properties:
+      accepted_input_types:
+        type: array
+        description: For this phase, it should be an empty array.
+        items:
+          type: string
+      tutorial_mode:
+        type: boolean
+        description: "For this phase, it should be False to indicate it is not the practice phase."
+      requires_perception_data:
+        type: boolean
+        description: "For this phase, it should be False to indicate we're not collecting perception data."

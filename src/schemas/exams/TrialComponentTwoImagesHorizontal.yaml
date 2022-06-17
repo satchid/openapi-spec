@@ -1,0 +1,25 @@
+title: Instructions with 2 images
+allOf:
+  - $ref: './BaseTrial.yaml'
+  - type: object
+    required:
+      - assets
+      - component
+      - component_data
+    properties:
+      component:
+        type: string
+        description: Component with two images, side by side.
+        example: "two_images_horizontal"
+      component_data:
+        type: object
+        required:
+          - body
+        properties:
+          body:
+            type: object
+            properties:
+              leading_image: 
+                $ref: './Image.yaml'
+              trailing_image: 
+                $ref: './Image.yaml'

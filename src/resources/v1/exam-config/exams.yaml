@@ -1,0 +1,64 @@
+post:
+  tags:
+    - exam config
+  summary: Create exam
+  description: Creates an exam and adds it to the exam-config table on DynamoDB.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            exam_code:
+              type: string
+              example: 'FLANKER_MOBILE_V1'
+            name:
+              type: string
+              example: 'Flanker Version1 (Mobile) Set71'
+            type:
+              type: string
+              example: 'EXAM_FLANKER'
+            subtype:
+              type: string
+              example: 'ATTENTION_MOBILE'
+            set_names:
+              type: object
+              example: ['SET_71']
+            rules:
+              type: object
+            phases:
+              type: object
+              example: [
+                'phase_display_type': 'INSTRUCTION',
+                'phase_name': 'pre_practice_instruction',
+                'phase_configuration': {
+                  'accepted_input_types': [],
+                  'component_data': {},
+                  'requires_perception_data': false,
+                  'tutorial_mode': false
+                },
+                'phase_group': 'practice'
+                ]
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    '400':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/exams/errors/InvalidExamInputError.yaml'
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized

@@ -1,0 +1,35 @@
+type: object
+required: [status]
+properties:
+  organization:
+    type: string
+    example: "mobile-org-2022"
+  partner_code:
+    type: string
+    example: "MOBILE_2022"
+  status:
+    type: string
+    enum:
+      - ACTIVE
+    example: ACTIVE
+  max_usage: 
+    type: integer
+    nullable: true
+    example: 1000
+  usage_count: 
+    type: integer
+    example: 10
+  created_at:
+    type: string
+    example: "2022-03-18T19:19:36.645Z"
+  deleted_at:
+    type: string
+    nullable: true
+    example: null
+  updated_at:
+    type: string
+    nullable: true
+    example: "2022-03-18T19:19:36.645Z"
+  description:
+    type: string
+    example: "Code for creating accounts for Mobile"

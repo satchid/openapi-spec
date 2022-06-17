@@ -1,0 +1,10 @@
+type: string
+nullable: true
+enum:
+  - cognitive_training
+  - exercise
+  - nutrition
+  - sleep
+  - social_engagement
+  - stress
+example: sleep

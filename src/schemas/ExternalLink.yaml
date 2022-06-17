@@ -1,0 +1,35 @@
+type: object
+properties:
+  external_link_type:
+    $ref: './ExternalLinkTypeEnum.yaml'
+  keiyaku:
+    type: object
+    description: We store the exact payload we received from myLinkX servers
+    properties:
+      yuko_keiyaku_umu:
+        type: boolean
+      sub:
+        type: string
+        example: dSyxHV6OZAzM/tj7TpTVMQ==
+      ninchisho:
+        type: boolean
+  external_link_sub:
+    type: string
+    example: dSyxHV6OZAzM/tj7TpTVMQ==
+    description: It is the same content from the keiyaku.sub and user_info.sub
+  user_info:
+    type: object
+    description: We store the exact payload we received from myLinkX servers
+    properties:
+      email:
+        type: string
+        example: fake@example.com
+      family_name:
+        type: string
+        example: Smith
+      given_name:
+        type: string
+        example: John
+      sub:
+        type: string
+        example: dSyxHV6OZAzM/tj7TpTVMQ==

@@ -1,0 +1,6 @@
+name: exam_id
+required: true
+in: path
+schema:
+  type: string
+description: Exam code used to uniquely identify the exam.

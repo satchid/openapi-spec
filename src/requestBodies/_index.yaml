@@ -1,0 +1,2 @@
+EmptyPayload:
+  $ref: './EmptyPayload.yaml'

@@ -1,0 +1,10 @@
+type: object
+properties:
+  lifestyle_domain:
+    $ref: './LifestyleDomainEnum.yaml'
+  cognitive_pathway:
+    $ref: './CognitivePathwayEnum.yaml'
+  coaching_program_start_date:
+    $ref: './coaching/CoachingProgramStartDate.yaml'
+  opt_out_of_articles:
+    $ref: './OptOutOfArticles.yaml'

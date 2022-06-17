@@ -1,0 +1,5 @@
+description: A JSON object containing item data
+content:
+application/json:
+    schema:
+    type: object

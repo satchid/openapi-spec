@@ -1,0 +1,115 @@
+get:
+  tags:
+    - user
+  summary: Simple user search
+  description: Find a list of users that matches a given search criteria. If the current user is a customer, the response will be limited to the user record. Only support users and admins are able to retrieve other users profiles.
+  parameters:
+    - in: query
+      name: pagesize
+      description: Maximum number of items to be retrieved in the payload.
+      schema:
+        type: number
+        default: 10
+    - in: query
+      name: page
+      description: Current page of records for pagination.
+      schema:
+        type: number
+        default: 1
+    - in: query
+      name: fields
+      description: Comma-separated list of field names to be returned in the payload. If it is not passed in the request, all User fields will be retrieved. The user_id will always be in the response payload since it is the unique identifier for the user record.
+      schema:
+        type: string
+        example: "organization,email,date_of_birth,sex"
+    - in: query
+      name: filter[field_name__sufix]
+      description: Allow filter the records to be retrieved. We must replace field_name with the proper field_name. And we can use suffix to indicate what is the operation to be used. It can be eq,exists,not_exists,is_in,gt,gte,lt,lte,between,contains. If no suffix is passed, it will consider the eq operation. For methods that expect more than one value, like is_in or between, we should provide a comma_separated list of values.
+      schema:
+        type: string
+        example: "male,female"
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            type: array
+            items: 
+              $ref: '../../../schemas/User.yaml'
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Filter suffix is not valid:
+              value:
+                error: "Filter suffix is not valid."
+            Invalid number of filter parts:
+              value:
+                error: "Filter is composed of an invalid number of parts. It should use double underscores at most once."
+            Unexpected filter suffix arguments:
+              value:
+                error: "Unexpected number of arguments for the given filter suffix."
+
+    '401':
+      $ref: '../../../responses/401.yaml'
+
+post:
+  tags:
+    - user
+  summary: Create user
+  description: "Create a user account"
+  servers:
+  - description: Development Environment
+    url: https://dev.auth.neurotrack.io
+  - description: QA Environment
+    url: https://qa.auth.neurotrack.io
+  - description: Staging Environment
+    url: https://staging.auth.neurotrack.io
+  - description: Production Environment
+    url: https://auth.neurotrack.io
+  - description: US Production Environment
+    url: https://auth.neurotrack.io
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../requestBodies/UserCreate.yaml'
+  responses:
+    200:
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/User.yaml'
+
+    400:
+      description: "User was not created."
+      content:
+        application/json:
+          examples:
+            Duplicate Value:
+              value:
+                message: User was not created.
+                culprits:
+                  - code: DUPLICATE_VALUE
+                    field: field_name
+                    original: example_email
+            Organization does not exist:
+              value:
+                message: User was not created.
+                culprits:
+                  - code: INVALID_VALUE
+                    field: organization
+                    original: invalid_organization
+                    expected: Organization invalid_organization not found.
+            Unknown value:
+              value:
+                message: User was not created.
+                culprits:
+                  - code: UNKNOWN_VALUE
+                    field: field_name
+                    original: field_value
+                    expected: Unrecognized field.

@@ -1,0 +1,82 @@
+post:
+  tags:
+    - exam serving
+  summary: Submit the perception data
+  description: >-
+    We're using the same endpoint for all exams, so the payload can change according to the exam.
+  parameters:
+    - $ref: '../../../../parameters/path/user_id.yaml'
+    - $ref: '../../../../parameters/path/assessment_id.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - $ref: '../../../../schemas/exams/PostPerceptionImagePairsSelectionInput.yaml'
+            - $ref: '../../../../schemas/exams/PostPerceptionImagePairsVideoInput.yaml'
+        examples:
+          Image Pairs:
+            value:
+              - exam_trial_id: "2e37eca7-8c68-4e56-a2c5-1aff6f5f4a79"
+                trial_start_time: "2021-06-15T00:00:00.000Z"
+                trial_end_time: "2021-06-15T00:00:02.000Z"
+                timeout: False
+                data:
+                  - type: "selection"
+                    value: "yes"
+              - exam_trial_id: "2e37eca7-8c68-4e56-a2c5-1aff6f5f4a79"
+                trial_start_time: "2021-06-15T00:00:00.000Z"
+                trial_end_time: "2021-06-15T00:00:04.000Z"
+                timeout: True
+                data: []
+              - exam_trial_id: "2e37eca7-8c68-4e56-a2c5-1aff6f5f4a79"
+                trial_start_time: "2021-06-15T00:00:00.000Z"
+                trial_end_time: "2021-06-15T00:00:02.000Z"
+                timeout: False
+                data:
+                  - type: "video"
+                    value:
+                      file: "my_file_name_received_from_send_video_endpoint"
+                      order: 0
+          Item Price:
+            value:
+              - exam_trial_id: "2e37eca7-8c68-4e56-a2c5-1aff6f5f4a79"
+                trial_start_time: "2021-06-15T00:00:00.000Z"
+                trial_end_time: "2021-06-15T00:00:02.000Z"
+                metadata:
+                  trial_scoring_type: "foil"
+                data:
+                  - type: "selection"
+                    value: "yes"
+  responses:
+    '200':
+      description: "The response is a list of dictionaries containing the exam_trial_id and the perception_id that was created for that trial."
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - type: array
+                description: Empty array
+                items:
+                  type: string
+              - type: object
+                properties:
+                  exam_trial_id:
+                    type: string
+                    description: "UUID of the Exam Trial sent in the payload"
+                    example: "793b37bd-61b7-4a36-8540-47fe096b7443"
+                  perception_id:
+                    type: string
+                    description: "UUID for the created perception record"
+                    example: "49e2b804-7f64-46e3-a718-6f594c9ec1d8"
+                required:
+                  - exam_trial_id
+                  - perception_id
+
+    '400': 
+      $ref: '../../../../responses/400.yaml'
+    '401':
+      $ref: '../../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../../responses/404.yaml'

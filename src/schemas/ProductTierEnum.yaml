@@ -1,0 +1,5 @@
+type: string
+enum:
+  - FULL_ACCESS
+  - EXAMS_DISABLED
+example: FULL_ACCESS

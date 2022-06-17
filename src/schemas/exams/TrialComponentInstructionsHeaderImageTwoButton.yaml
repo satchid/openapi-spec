@@ -1,0 +1,48 @@
+title: Instructions with header image and 2 buttons
+allOf:
+  - $ref: './BaseTrial.yaml'
+  - type: object
+    required:
+      - component
+      - component_data
+    properties:
+      component:
+        type: string
+        description: Instructions Text Only Trial.
+        example: "instructions_header_image_two_button"
+      component_data:
+        type: object
+        required:
+          - header
+          - body
+          - footer
+        properties:
+          header:
+            type: object
+            required:
+              - headline
+              - content
+            properties:
+              headline:
+                $ref: './Label.yaml'
+              content:
+                $ref: './Label.yaml'
+          body:
+            type: object
+            properties:
+              image:
+                $ref: './Image.yaml'
+          footer:
+            type: object
+            required:
+              - leading_button
+              - trailing_button
+            properties:
+              leading_button:
+                $ref: './Button.yaml'
+              trailing_button:
+                $ref: './Button.yaml'
+          navigation:
+            type: array
+            items:
+              $ref: './NavigationEnum.yaml'

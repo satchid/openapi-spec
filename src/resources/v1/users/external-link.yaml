@@ -1,0 +1,193 @@
+get:
+  tags:
+    - external links
+  summary: Get external link
+  description: >-
+    Retrieves external link data, including policy info.
+    The endpoint my include other link_types in the future, but for now, the only implementation available is myLinkX.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+    - in: path
+      name: link_type
+      required: true
+      schema:
+        type: string
+        enum:
+          - mylinkx
+        default: mylinkx
+
+  responses:
+    '200':
+      description: "The response is an Assessment Object, but the format depends on the exam type/subtype and the following parameters: translate and trial_phases."
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/external-link/MyLinkXExternalLink.yaml'
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404':
+      description: "Not Found. return HTTP 404"
+      content:
+        application/json:
+          examples:
+            User Not Found:
+              value:
+                code: "USR-401"
+                message: "Bad Request for get external link"
+                culprits:
+                  - category: "INVALID_PATH_PARAMETERS"
+                    message: "user not found"
+                    field : "user-id"
+                    original: "37de36a8-6046-4c2d-9597-791039a13a56"
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+post:
+  tags:
+    - external links
+  summary: Create external link
+  description: >-
+    Links the Neurotrack user record with an external provider.
+    The endpoint my include other link_types in the future, but for now, the only implementation available is myLinkX.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+    - in: path
+      name: link_type
+      required: true
+      schema:
+        type: string
+        enum:
+          - mylinkx
+        default: mylinkx
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../schemas/external-link/ExternalLinkInput.yaml'
+  responses:
+    '200':
+      description: "The response is an External Link Object."
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/external-link/MyLinkXExternalLink.yaml'
+    '400':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Link Type not Supported:
+              value:
+                code: "USR-402"
+                message: "Bad request data for creating user external link."
+                culprits:
+                  - category: "INVALID_PATH_PARAMETERS"
+                    message: "link-type not supported"
+                    field : "link-type"
+                    original: "any-invalid-link-type"
+                    expected: "mylinkx"
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+            User not Found:
+              value:
+                code: "USR-402"
+                message: "Bad request data for creating user external link."
+                culprits:
+                  - category: "INVALID_PATH_PARAMETERS"
+                    message: "User not found"
+                    field : "user-id"
+                    original: "invalid-user-id"
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+            User already linked to an account:
+              value:
+                code: "USR-402"
+                message: "Bad request data for creating user external link."
+                culprits:
+                  - category: "CONFLICT"
+                    message: "User already linked to an account"
+                    field : "user-id"
+                    original: "user-uuid"
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+    '401': 
+      $ref: '../../../responses/401.yaml'
+    '404':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            User Not Found:
+              value:
+                code: "USR-401"
+                message: "Bad Request for get external link"
+                culprits:
+                  - category: "INVALID_PATH_PARAMETERS"
+                    message: "user not found"
+                    field : "user-id"
+                    original: "37de36a8-6046-4c2d-9597-791039a13a56"
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+    '409':
+      description: "Conflict. return HTTP 409"
+      content:
+        application/json:
+          examples:
+            External account already linked to another user:
+              value:
+                code: "USR-405"
+                message: "Provided payload already linked to another user."
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+    '424':
+      description: "Failed Dependency. return HTTP 424"
+      content:
+        application/json:
+          examples:
+            Failed Dependency:
+              value:
+                code: "USR-404"
+                message: "Unable to retrieve external user info with given payload."
+                culprits:
+                  - category: "FAILED_DEPENDENCY"
+                    message: "Bearer error"
+                    field : "access_token"
+                    original: null
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"
+delete:
+  tags:
+    - external links
+  summary: Remove external link
+  description: >-
+    Removes external link data. Even if the user didn't have the external link, the endpoint will return a successful response to ensure it is not connected.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+    - in: path
+      name: link_type
+      required: true
+      schema:
+        type: string
+        enum:
+          - mylinkx
+        default: mylinkx
+
+  responses:
+    '204':
+      description: "The resource was deleted successfully. No content."
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404':
+      description: "Not Found. return HTTP 404"
+      content:
+        application/json:
+          examples:
+            User Not Found:
+              value:
+                code: "USR-401"
+                message: "Bad Request for get external link"
+                culprits:
+                  - category: "INVALID_PATH_PARAMETERS"
+                    message: "user not found"
+                    field : "user-id"
+                    original: "37de36a8-6046-4c2d-9597-791039a13a56"
+                    expected: null
+                fingerprint: "8393060b-9ac7-423d-b2e3-fb8cbce4ff0d"

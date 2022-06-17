@@ -1,0 +1,6 @@
+name: user_id
+required: true
+in: path
+schema:
+  type: string
+description: UUID used to uniquely identify the user.

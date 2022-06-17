@@ -1,0 +1,146 @@
+delete:
+  tags:
+    - user
+  summary: Delete user
+  description: "Deletes a user account"
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: user_id
+      in: path
+      description: "The user id to be deleted"
+      required: true
+      schema:
+        type: string
+  responses:
+    204:
+      description: "Deleted successfully (no response content)"
+    401:
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: "Unauthorized"
+    404:
+      description: "No user found for the id provided"
+      content:
+        application/json:
+          schema:
+            properties:
+              message: 
+                type: string
+                example: "No user found for the ID provided"
+              fingerprint:
+                type: string
+                example: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+              culprits:
+                type: array
+                items: 
+                  type: string
+                  example: ""
+                example: []
+get:
+  tags:
+    - user
+  summary: Get user
+  description: "Get a user account"
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: user_id
+      in: path
+      description: "The user id to be retrieved"
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/User.yaml'
+    401:
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: "Unauthorized"
+    404:
+      description: "No user found for the id provided"
+      content:
+        application/json:
+          schema:
+            properties:
+              message: 
+                type: string
+                example: "No user found for the ID provided"
+              fingerprint:
+                type: string
+                example: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+              culprits:
+                type: array
+                items: 
+                  type: string
+                  example: ""
+                example: []
+patch:
+  tags:
+    - user
+  summary: Update user
+  description: "Update a user account"
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: user_id
+      in: path
+      description: "The user id to be retrieved"
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../../requestBodies/UserPatch.yaml'
+  responses:
+    200:
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/User.yaml'
+    401:
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+                example: "Unauthorized"
+    404:
+      description: "No user found for the id provided"
+      content:
+        application/json:
+          schema:
+            properties:
+              message: 
+                type: string
+                example: "No user found for the ID provided"
+              fingerprint:
+                type: string
+                example: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+              culprits:
+                type: array
+                items: 
+                  type: string
+                  example: ""
+                example: []

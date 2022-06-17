@@ -1,0 +1,88 @@
+type: object
+required:
+  - user_id
+  - assessment_id
+  - category
+  - status
+  - perception_started_at
+  - domain
+  - quantile
+  - quantile_descriptor
+  - raw_score
+  - quantile_descriptor_bounds
+properties:
+  user_id:
+    type: string
+    example: "7551576a-492f-47d0-8af2-1ce4e6f9a418"
+  assessment_id:
+    type: string
+    example: "Assessment-8d3a5624-7fcb-4100-a9ca-0c285efca68f"
+  assessment_name:
+    type: string
+    example: "Assessment: Image Pairs"
+    description: Only Cognitive Exams would have this attribute filled.
+  category:
+    $ref: './CategoryEnum.yaml'
+  status:
+    $ref: './AssessmentStatusEnum.yaml'
+  status_reason:
+    type: array
+    items:
+      type: string
+      example: "IMPLICIT_LEARNING-USER_RESULT_SUCCEED"
+  perception_started_at:
+    type: string
+    example: "2021-07-29T18:37:24.600Z"
+  domain:
+    $ref: './DomainEnum.yaml'
+  quantile:
+    type: number
+    example: 0.52
+  quantile_descriptor:
+    type: string
+    example: "AVERAGE_ABOVE"
+    enum:
+      - LOW
+      - BELOW_AVERAGE
+      - AVERAGE_ABOVE
+      - POOR
+      - MODERATE
+      - HIGH
+    description: "Quantile descriptor for Cognitive Domains are: LOW, BELOW_AVERAGE or AVERAGE_ABOVE. Lifestyle Domains use POOR, MODERATE, HIGH"
+  raw_score:
+    type: number
+    example: 0.6123
+    description: "User's raw score on the exam"
+  quantile_descriptor_bounds:
+    type: object
+    properties:
+      LOW:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.01
+          - 0.09
+      BELLOW_AVERAGE:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.09
+          - 0.25
+      AVERAGE_ABOVE:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+        description: lower and upper bound for quantile descriptor
+        example:
+          - 0.25
+          - 1.000001

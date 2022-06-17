@@ -1,0 +1,8 @@
+type: object
+required:
+  - filename
+properties:
+  filename:
+    type: string
+    description: The asset name for the image. For Web exams, it will be a SVG file. Mobile exams use PNG files.
+    example: "f3b965f84f9380aad58835f83b936917.png"

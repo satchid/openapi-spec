@@ -1,0 +1,36 @@
+post:
+  tags:
+    - auth
+  summary: Logout
+  description: Invalidates the user refresh token. It requires a valid Access token as the input  on the Authorization header.
+  servers:
+  - description: Development Environment
+    url: https://dev.auth.neurotrack.io
+  - description: QA Environment
+    url: https://qa.auth.neurotrack.io
+  - description: Staging Environment
+    url: https://staging.auth.neurotrack.io
+  - description: Production Environment
+    url: https://auth.neurotrack.io
+  - description: US Production Environment
+    url: https://auth.neurotrack.io
+  security: 
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '403':
+      $ref: '../../../responses/403.yaml'

@@ -1,0 +1,51 @@
+type: object
+properties:
+  order:
+    type: string
+    example: 0001
+  exam_trial_id:
+    type: string
+    example: SYMBOL_DIGITS_ABRIDGED_V1#set100#MOBILE#01_pre_practice_instructions#0001
+  trial:
+    type: object
+    properties:
+      exam_code:
+        type: string
+        example: SYMBOL_DIGITS_ABRIDGED_V1
+      platform:
+        type: string
+        example: MOBILE
+      component:
+        type: string
+        example: instructions_title_screen
+      code:
+        type: string
+        example: SYMBOL_DIGITS_ABRIDGED_V1#symbol_match_pre_practice_instruction_mobile_01
+      name:
+        type: string
+        example: symbol_match_pre_practice_instruction_mobile_01
+      component_data:
+        type: object
+      delay_display_seconds:
+        type: number
+        nullable: true
+        example: null
+      display_seconds:
+        type: number
+        nullable: true
+        example: null
+      trial_scoring_type:
+        type: string
+        nullable: true
+        example: null
+      requires_perception_data:
+        type: boolean
+        nullable: true
+        example: null
+      translations:
+        type: object
+        example: {"en": {}}
+      assets:
+        type: array
+        items:
+          $ref: "./TrialAsset.yaml"

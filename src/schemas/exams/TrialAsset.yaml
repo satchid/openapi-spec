@@ -1,0 +1,30 @@
+type: object
+properties:
+  exam_code:
+    type: string
+    example: SYMBOL_DIGITS_ABRIDGED_V1
+  platform:
+    type: string
+    example: MOBILE
+  code:
+    type: string
+    example: SYMBOL_DIGITS_ABRIDGED_V1#nt_cognitive_assessments_symbol_match_bg.png
+  filename:
+    type: string
+    example: 00000000abc0359804d6789fffffffff.png
+  name:
+    type: string
+    example: nt_cognitive_assessments_symbol_match_bg.png
+  type:
+    type: string
+    example: ASSET_IMAGE
+  subtype:
+    type: string
+    example: PNG
+  language:
+    type: string
+    nullable: true
+    example: null
+  configuration:
+    type: object
+    example: {"location": {}}

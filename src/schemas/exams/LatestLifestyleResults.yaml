@@ -1,0 +1,16 @@
+type: object
+properties:
+  COGNITIVE_TRAINING:
+    $ref: './AssessmentResult.yaml'
+  EXERCISE:
+    $ref: './AssessmentResult.yaml'
+  NUTRITION:
+    $ref: './AssessmentResult.yaml'
+  SLEEP:
+    $ref: './AssessmentResult.yaml'
+  SOCIAL_ENGAGEMENT:
+    $ref: './AssessmentResult.yaml'
+  STRESS:
+    $ref: './AssessmentResult.yaml'
+  GLOBAL_LIFESTYLE_DOMAIN:
+    $ref: './AssessmentResult.yaml'

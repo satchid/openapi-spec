@@ -1,0 +1,18 @@
+type: object
+properties:
+  status:
+    type: string
+    description: "Current status of the API."
+    enum:
+      - UP_TO_DATE
+      - UPDATE_AVAILABLE
+      - UPDATE_REQUIRED
+      - MAINTENANCE_MODE
+  headline:
+    type: string
+    description: "Headline to be displayed on the app about the current status. This message will be translated according to the language defined on the request header."
+    example: "Update Required"
+  body:
+    type: string
+    description: "Message to be displayed on the app about the current status. This message will be translated according to the language defined on the request header."
+    example: "An updated version of Neurotrack is available. You must download it to continue your experience."

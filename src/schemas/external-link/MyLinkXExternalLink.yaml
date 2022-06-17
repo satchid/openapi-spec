@@ -1,0 +1,21 @@
+type: object
+description: External Link data. The attributes keiyaku and keiyaku_error_log are mutually exclusive.
+required:
+  - external_link_type
+  - external_link_sub
+  - user_info
+properties:
+  external_link_type:
+    type: string
+    example: "mylinkx"
+  external_link_sub:
+    type: string
+    example: "tVdAcVbsWD9iGuUbWqz1PA=="
+  user_info:
+    $ref: './ExternalLinkUserInfo.yaml'
+  user_info_error_log:
+    $ref: './MyLinkXErrorLog.yaml'
+  keiyaku:
+    $ref: './MyLinkXPolicyInfo.yaml'
+  keiyaku_error_log:
+    $ref: './MyLinkXErrorLog.yaml'

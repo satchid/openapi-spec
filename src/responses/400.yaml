@@ -1,0 +1,5 @@
+description: "Bad request. return HTTP 400"
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/NtApiError.yaml'

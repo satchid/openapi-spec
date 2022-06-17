@@ -1,0 +1,39 @@
+type: object
+required:
+  - version
+  - phase_display_type
+  - phase_configuration
+  - trials
+properties:
+  version:
+    type: string
+    example: 1.0.0
+  phase_display_type:
+    type: string
+    example: INSTRUCTION
+    enum:
+      - FLANKER
+      - GO_NO_GO
+      - INSTRUCTION
+      - PAIRED_IMAGE_GUIDED
+      - PAIRED_IMAGE_UNGUIDED
+      - PAIRED_ITEM_PRICE_PHASE_GUIDED
+      - PAIRED_ITEM_PRICE_PHASE_UNGUIDED
+      - PAIRED_SYMBOL_DIGITS
+      - TRAILS_B
+  phase_configuration:
+    anyOf:
+      - $ref: './PhaseConfigurationInstruction.yaml'
+      - $ref: './PhaseConfigurationPairedImageGuided.yaml'
+      - $ref: './PhaseConfigurationPairedImageUnguided.yaml'
+  trials:
+    type: array
+    items:
+      anyOf:
+        - $ref: './TrialComponentBlank.yaml'
+        - $ref: './TrialComponentInstructionsTextOnly.yaml'
+        - $ref: './TrialComponentInstructionsTitleScreen.yaml'
+        - $ref: './TrialComponentInstructionsHeaderImage.yaml'
+        - $ref: './TrialComponentInstructionsHeaderImageTwoButton.yaml'
+        - $ref: './TrialComponentTwoImagesHorizontal.yaml'
+        - $ref: './TrialComponentTwoImagesHorizontalTwoButtons.yaml'

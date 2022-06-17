@@ -1,0 +1,6 @@
+type: string
+enum:
+  - attention
+  - executive_function
+  - memory
+example: attention

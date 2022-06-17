@@ -1,0 +1,55 @@
+patch:
+  tags:
+    - user
+  summary: Update journey settings
+  description: Update journey settings for a particular user.Only support users and admins are able to update journey settings.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/JourneySettingsPatch.yaml'
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            BAD_FORMAT_lifestyle_domain:
+              value:
+                error:
+                  code: BAD_FORMAT
+                  field: lifestyle_domain
+                  original: walk
+                  expected: None,NOT_SELECTED,COGNITIVE_TRAINING,EXERCISE,NUTRITION,SLEEP,SOCIAL_ENGAGEMENT,STRESS
+            BAD_FORMAT_cognitive_pathway:
+              value:
+                error:
+                  code: BAD_FORMAT
+                  field: cognitive_pathway
+                  original: Brain
+                  expected: None,MEMORY,EXECUTIVE_FUNCTION,ATTENTION
+            BAD_FORMAT_coaching_program_start_date:
+              value:
+                error:
+                  code: BAD_FORMAT
+                  field: coaching_program_start_date
+                  original: tomorrow
+                  expected: Input should be a valid date
+            BAD_FORMAT_opt_out_of_articles:
+              value:
+                error:
+                  code: BAD_FORMAT
+                  field: opt_out_of_articles
+                  original: Yes
+                  expected: Input should be a boolean
+            BAD_FORMAT_null_journey_settings:
+              value:
+                error:
+                  code: BAD_FORMAT
+                  field: journey_settings
+                  expected: Input should not be a null value
+    '401':
+      $ref: '../../../responses/401.yaml'

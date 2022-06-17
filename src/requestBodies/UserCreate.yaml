@@ -1,0 +1,51 @@
+type: object
+required:
+  - family_name
+  - given_name
+  - email
+  - password
+  - organization 
+properties:
+  family_name:
+    type: string
+    example: "John"
+  given_name:
+    type: string
+    example: "Smith"
+  email:
+    type: string
+    description: "User email for the account"
+    example: "user-email@xyz.com"
+  password:
+    type: string
+    description: "Password for the user account"
+  organization:
+    type: string
+    description: "Organization to associate with the user"
+  timezone:
+    $ref: '../schemas/TimezoneEnum.yaml'
+  language:
+    $ref: '../schemas/LanguageEnum.yaml'
+  sex:
+    $ref: '../schemas/SexEnum.yaml'
+  product_tier:
+    $ref: '../schemas/ProductTierEnum.yaml'
+  date_of_birth:
+    type: string
+    nullable: true
+    description: Format YYYY-MM-DD
+    example: 1970-01-01
+  accept_tnc:
+    type: boolean
+    nullable: true
+    description: Defines if the user accepted the Terms and Conditions
+  education:
+    $ref: '../schemas/EducationEnum.yaml'
+  ethnicity:
+    $ref: '../schemas/EthnicityEnum.yaml'
+  journey_settings:
+    $ref: '../schemas/JourneySettings.yaml'
+  consents:
+    type: array
+    items:
+      $ref: '../schemas/Consent.yaml'

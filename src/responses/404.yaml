@@ -1,0 +1,5 @@
+description: "Not Found. return HTTP 404"
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/NtApiError.yaml'

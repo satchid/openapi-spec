@@ -1,0 +1,124 @@
+get:
+  tags:
+    - results
+  summary: List user results v2
+  description: List User results, allowing a combination of parameters to retrieve data. The last 'n' results are retrieved chronologically, where 'n' is an integer parameter. The endpoint has a framework that supports any additional parameter that is passed. The parameter should be passed in the format "filter[field_name]=filter_value".
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+    - in: header
+      name: Accept-Language
+      description: Language used to translate content.
+      schema:
+        type: string
+        enum:
+          - en
+          - ja
+        default: en
+    - in: query
+      name: translate
+      description: Translate the content if true. Otherwise, returns the translation keys.
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+        default: true
+    - in: query
+      name: before
+      description: Provides an option for the user to enter the start date of results needed, in an ISO formatted fashion. Includes in the response only the Results for assessments started exactly at the given ISO formatted date.
+      schema:
+        type: string
+    - in: query
+      name: after
+      description: Provides an option for the user to enter the end date till which results are needed, in an ISO formatted fashion. Includes in the response only the Results for assessments that end exactly at the given ISO formatted date.
+      schema:
+        type: string
+    - in: query
+      name: status
+      description: Retrieves failed or successful results, according  to the value of the parameter selected. Failed results include results in both the RESULT_FAILED as well as the RESULT_FLAGGED statuses.
+      schema:
+        type: string
+        enum:
+          - RESULT_AVAILABLE
+          - RESULT_FAILED
+          - RESULT_FLAGGED
+    - in: query
+      name: Domain
+      description: retrieves results on a given domain for the user. Can not be used with assessment_id, latest or status.
+      schema:
+        type: string
+        enum:
+          - associative_learning
+          - associative_memory
+          - attention
+          - cognitive_training
+          - executive_function
+          - exercise
+          - inhibition
+          - nutrition
+          - processing_speed
+          - sleep
+          - social_engagement
+          - stress
+    - in: query
+      name: count
+      description: The number of records to be retrieved chronologically, with the latest records displayed first.
+      schema:
+        type: number
+        default: 10
+
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              anyOf:
+              - $ref: '../../../schemas/exams/AssessmentSuccessfulResults.yaml'
+              - $ref: '../../../schemas/exams/AssessmentFailedOrFlaggedResults.yaml'
+              - $ref: '../../../schemas/exams/GlobalCognitiveScore.yaml'
+              - $ref: '../../../schemas/exams/GlobalLifestyleScore.yaml'
+      
+    '400': 
+      description: "Invalid Query string"
+      content:
+        application/json:
+          examples:
+            Invalid Domain:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "Invalid domain"
+                    field: "domain"
+            Invalid status:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "Invalid status provided: ['invalid_status']"
+                    field: "status"
+            Invalid count:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "Invalid count value"
+                    field: "count"
+            QueryDBError:
+              value:
+                code: "RS-106"
+                message: "An unexpected error occurred while querying DynamoDB."
+                culprits:
+                  - category: "DB_ERROR"
+                    message: "Unable to get results from DynamoDB : error_code: error_message"
+                    field: ""
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'

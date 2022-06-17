@@ -1,0 +1,11 @@
+type: string
+enum:
+  - account_manager
+  - admin
+  - care_team
+  - claim_manager
+  - customer
+  - org_admin
+  - power_support
+  - support
+example: customer

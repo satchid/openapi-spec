@@ -1,0 +1,37 @@
+post:
+  tags:
+    - auth
+  summary: Login
+  description: Authenticates the user credentials (username and password) and returns the access token and refresh token if the validation is successful.
+  servers:
+  - description: Development Environment
+    url: https://dev.auth.neurotrack.io
+  - description: QA Environment
+    url: https://qa.auth.neurotrack.io
+  - description: Staging Environment
+    url: https://staging.auth.neurotrack.io
+  - description: Production Environment
+    url: https://auth.neurotrack.io
+  - description: US Production Environment
+    url: https://auth.neurotrack.io
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            username:
+              type: string
+              example: 'user@example.com'
+            password:
+              type: string
+              example: '123456'
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              $ref: '../../../schemas/Token.yaml'
+    '403':
+      $ref: '../../../responses/403.yaml'

@@ -1,0 +1,19 @@
+type: object
+required:
+  - organization
+  - title
+  - description
+  - default_language
+properties:
+  organization:
+    type: string
+    example: Organization Name
+  description:
+    type: string
+    example: Organization Description
+  default_language:
+    type: string
+    example: 'en'
+  mailchimp_audience_id:
+    type: string
+    example: 'FAKE_MAILCHIMP_ID'

@@ -1,0 +1,16 @@
+type: object
+description: In this object we will just store exactly what was retrieved by myLinkX get policy info endpoint.
+required:
+  - sub
+  - yuko_keiyaku_umu
+  - ninchisho
+properties:
+  sub:
+    type: string
+    example: "tVdAcVbsWD9iGuUbWqz1PA=="
+  yuko_keiyaku_umu:
+    type: string
+    example: "tVdAcVbsWD9iGuUbWqz1PA=="
+  ninchisho:
+    type: string
+    example: "tVdAcVbsWD9iGuUbWqz1PA=="

@@ -1,0 +1,32 @@
+title: Instructions with two buttons
+allOf:
+  - $ref: './TrialComponentTwoImagesHorizontal.yaml'
+  - type: object
+    required:
+      - assets
+      - component
+      - component_data
+    properties:
+      component:
+        type: string
+        description: Component with two images, side by side.
+        example: "two_images_horizontal_two_buttons"
+      trial_scoring_type:
+        type: string
+        enum:
+          - sham
+          - target
+          - foil
+      component_data:
+        type: object
+        required:
+          - body
+          - footer
+        properties:
+          footer:
+            type: object
+            properties:
+              leading_button: 
+                $ref: './Button.yaml'
+              trailing_button: 
+                $ref: './Button.yaml'

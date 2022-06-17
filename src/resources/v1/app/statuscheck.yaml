@@ -1,0 +1,106 @@
+get:
+  summary: Get the current state of the app
+  description: Get the current state of the app. It indicates if the app is in maintenance mode and if there any update available (required or optional).
+  tags:
+    - app
+  parameters:
+    - in: header
+      name: Accept-Language
+      # TODO: move to global headers
+      description: Language used to translate content.
+      schema:
+        type: string
+        enum:
+          - en
+          - ja
+        default: en
+    - in: query
+      name: platform
+      description: App's OS platform
+      schema:
+        type: string
+        enum:
+          - ios
+          - android
+    - in: query
+      name: version
+      description: Current version of the app on the user device.
+      schema:
+        type: string
+        example: "2.1.1"
+    - in: query
+      name: identifier
+      description: App's identifier
+      schema:
+        type: string
+        enum:
+          - com.neurotrack.ios.app
+          - com.neurotrack.ios.app.staging
+          - com.neurotrack.ios.app.qa
+          - com.neurotrack.ios.app.dev
+          - com.neurotrack.android.app
+          - com.neurotrack.android.app.staging
+          - com.neurotrack.android.app.qa
+          - com.neurotrack.android.app.dev
+
+  responses:
+    '200':
+      description: "Successfull request showing the current app status."
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/AppStatus.yaml'
+          examples:
+            Up to Date:
+              value:
+                status: "UP_TO_DATE"
+                headline: "Up To Date"
+                body: "Neurotrack app is up to date."
+            Update Available:
+              value:
+                status: "UPDATE_AVAILABLE"
+                headline: "Update Available"
+                body: "An updated version of Neurotrack is available. Please download it for the best experience."
+            Update Required:
+              value:
+                status: "UPDATE_REQUIRED"
+                headline: "Update Required"
+                body: "An updated version of Neurotrack is available. You must download it to continue your experience."
+            Maintenance Mode:
+              value:
+                status: "MAINTENANCE_MODE"
+                headline: "Under Maintenance"
+                body: "Sorry, your app is momentarily unavailable as Neurotrack is working on solving some issues. Hold tight and check in back soon."
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Missing required parameter:
+              value:
+                code: "APS-402"
+                message: "Bad request for getting App State."
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "The parameter platform, version and build_number must be provided."
+            Invalid Platform:
+              value:
+                code: "APS-402"
+                message: "Bad request for getting App State."
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "The parameter platform is missing or invalid."
+            Invalid Version:
+              value:
+                code: "APS-402"
+                message: "Bad request for getting App State."
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "The parameter version is missing or an invalid SemVer string."
+            Invalid Identifier:
+              value:
+                code: "APS-402"
+                message: "Bad request for getting App State."
+                culprits:
+                  - category: "INVALID_REQUEST_DATA"
+                    message: "The parameter identifier is missing or invalid."

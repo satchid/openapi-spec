@@ -1,0 +1,41 @@
+post:
+  tags:
+    - auth
+  summary: Refresh token
+  description: Generates a new access token for the user when the refresh token provided is valid.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            refresh_token:
+              type: string
+              description: Refresh token
+
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              # TODO: Shouldn't this be our Token schema?
+              type: object
+              properties:
+                access_token:
+                  type: string
+                  description: "Access token that should be used in the other endpoints. This endpoint is short lived, generally valid for some minutes."
+                id_token:
+                  type: string
+                  description: "Id token that contains information about the user identification such as api_url, organization, is_test_user."
+                expires_in:
+                  type: integer
+                  description: "How long, in seconds, the access token is valid."
+                  example: 300
+                token_type:
+                  type: string
+                  description: "Token type to be used as a prefix for the access token in the authenticated requests. It should be always 'bearer'"
+                  example: "bearer"
+    '401':
+      $ref: '../../../responses/401.yaml'

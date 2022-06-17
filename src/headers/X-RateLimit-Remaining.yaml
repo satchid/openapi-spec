@@ -1,0 +1,4 @@
+description: Remaining requests for the hour
+schema:
+  type: integer
+example: 94

@@ -1,0 +1,318 @@
+value:
+  id: "Assessment-20238674-61c4-4290-bf0d-6be2764cf284"
+  user_id: "991e8a2f-9151-4853-bb1c-49b1095a7d00"
+  status: "NOT_STARTED"
+  type: "EXAM_IMPRINT_MEMORY_ASSESSMENT"
+  subtype: "PAIRED_RECOGNITION_ABRIDGED_WEB"
+  base_media_url: "https://api.jp-neurotrack.io/v1/exam-media"
+  phases:
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              image:
+                filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_text_only"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+              - "NEXT"
+          assets: []
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_header_image"
+          component_data:
+            body:
+              image:
+                filename: "df9a3751d69e5e72dcff065ac57d661c.svg"
+            header:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            navigation:
+              - "CLOSE"
+              - "PREVIOUS"
+              - "NEXT"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+    - phase_display_type: "PAIRED_IMAGE_GUIDED"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types:
+          - "VIDEO"
+        requires_perception_data: True
+        display_seconds: 5
+        tutorial_mode: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "two_images_horizontal"
+          component_data:
+            body:
+              trailing_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+              leading_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "blank"
+          component_data: {}
+          assets: []
+          display_seconds: 2
+          requires_perception_data: False
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation: []
+          assets: []
+    - phase_display_type: "PAIRED_IMAGE_UNGUIDED"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types:
+          - "VIDEO"
+        requires_perception_data: True
+        display_seconds: 5
+        tutorial_mode: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "two_images_horizontal"
+          component_data:
+            body:
+              trailing_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+              leading_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "blank"
+          component_data: {}
+          assets: []
+          display_seconds: 2
+          requires_perception_data: False
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation: []
+          assets: []
+    - phase_display_type: "PAIRED_IMAGE_GUIDED"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        requires_perception_data: False
+        display_seconds: 5
+        tutorial_mode: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "two_images_horizontal"
+          component_data:
+            body:
+              trailing_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+              leading_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "blank"
+          component_data: {}
+          assets: []
+          display_seconds: 2
+          requires_perception_data: False
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation: []
+          assets: []
+    - phase_display_type: "PAIRED_IMAGE_UNGUIDED"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types:
+          - "SELECTION"
+        requires_perception_data: True
+        display_seconds: 5
+        tutorial_mode: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "two_images_horizontal"
+          component_data:
+            body:
+              trailing_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+              leading_image:
+                filename: "2117dcf6b595c6fa2e59d0bf31ac8a2c.svg"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "blank"
+          component_data: {}
+          assets: []
+          display_seconds: 2
+          requires_perception_data: False
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "134b7e8527df3912090599a28b3e6967.zip"
+      version: "2.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation: []
+          assets: []

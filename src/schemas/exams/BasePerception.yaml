@@ -1,0 +1,21 @@
+type: object
+properties:
+  exam_trial_id:
+    type: string
+    description: This attribute is part of the Trial received in the Get Assessment endpoint.
+    example: "4b0283a9-fe10-4487-bf14-28e8a67a8312"
+  trial_start_time:
+    type: string
+    description: When the trial started, in a ISO string. Milliseconds precision is required for most exams.
+    example: "2021-01-20T09:00:00.000Z"
+  trial_end_time:
+    type: string
+    description: When the trial ended, in a ISO string. Milliseconds precision is required for most exams.
+    example: "2021-01-20T09:00:00.000Z"
+  metadata:
+    type: object
+  data:
+    type: object
+  timeout:
+    type: boolean
+    description: "Indicates if the time was expired and the user did not provide any answer. When it is true, we should not expect any content in the data attribute. This attribute could be an empty array of even removed from the payload."

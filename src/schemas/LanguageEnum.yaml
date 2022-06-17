@@ -1,0 +1,6 @@
+type: string
+description: the list of accepted language codes is huge. We're just defining the most common ones here.
+enum:
+  - en
+  - ja
+example: en

@@ -1,0 +1,174 @@
+get:
+  tags:
+    - results
+  summary: List user results v1
+  description: Get User results, allowing a combination of parameters to retrieve data.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+    - in: header
+      name: Accept-Language
+      description: Language used to translate content.
+      schema:
+        type: string
+        enum:
+          - en
+          - ja
+        default: en
+    - in: query
+      name: translate
+      description: Translate the content if true. Otherwise, returns the translation keys.
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+        default: true
+    - in: query
+      name: latest
+      description: retrieves latest results for the user. Can not be used with assessment_id, domain or status.
+      schema:
+        type: boolean
+        enum:
+          - true
+          - false
+    - in: query
+      name: category
+      description: retrieves results on a category domain for the user. Can not be used with assessment_id.
+      schema:
+        type: string
+        enum:
+          - cognitive
+          - lifestyle
+        default: cognitive
+    - in: query
+      name: domain
+      description: retrieves results on a given domain for the user. Can not be used with assessment_id, latest or status.
+      schema:
+        type: string
+        enum:
+          - associative_learning
+          - associative_memory
+          - attention
+          - cognitive_training
+          - executive_function
+          - exercise
+          - inhibition
+          - nutrition
+          - processing_speed
+          - sleep
+          - social_engagement
+          - stress
+    - in: query
+      name: assessment_id
+      description: Assessment ID that will have its results retrieved. Can not be used with latest, category, domain or status.
+      schema:
+        type: string
+    - in: query
+      name: status
+      description: "Status of results that will be included in the response. Allows multiple items separated by comma. Accepted values: RESULT_AVAILABLE, RESULT_FAILED, RESULT_FLAGGED."
+      schema:
+        type: string
+        default: RESULT_AVAILABLE
+    - in: query
+      name: assessment_start_at
+      description: Includes in the response only the Results for assessments started exactly at the given ISO formatted date. If the request doesn't include any of the assessment_start_at filters, only results from the last 12 months will be included in the response.
+      schema:
+        type: string
+    - in: query
+      name: assessment_start_at__gt
+      description: Includes in the response only the Results for assessments started after the given ISO formatted date. If the request doesn't include any of the assessment_start_at filters, only results from the last 12 months will be included in the response.
+      schema:
+        type: string
+    - in: query
+      name: assessment_start_at__gte
+      description: Includes in the response only the Results for assessments started after (or exactly at) the given ISO formatted date. If the request doesn't include any of the assessment_start_at filters, only results from the last 12 months will be included in the response.
+      schema:
+        type: string
+    - in: query
+      name: assessment_start_at__lt
+      description: Includes in the response only the Results for assessments started before the given ISO formatted date. If the request doesn't include any of the assessment_start_at filters, only results from the last 12 months will be included in the response.
+      schema:
+        type: string
+    - in: query
+      name: assessment_start_at__lte
+      description: Includes in the response only the Results for assessments started before (or exactly at) the given ISO formatted date. If the request doesn't include any of the assessment_start_at filters, only results from the last 12 months will be included in the response.
+      schema:
+        type: string
+
+  responses:
+    '200':
+      description: "The payload is different when we request latest data or any other option"
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - $ref: '../../../schemas/exams//AssessmentResult.yaml'
+              - $ref: '../../../schemas/exams//LatestCognitiveResults.yaml'
+              - $ref: '../../../schemas/exams//LatestLifestyleResults.yaml'
+
+
+    '400': 
+      description: "Invalid Query string"
+      content:
+        application/json:
+          examples:
+            Missing assessment_id, domain or latest:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "domain or latest or assessment_id is required"
+                    field: "query_parameters"
+            Passed more than one of assessment_id, domain, latest:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "<field1> and <field2> are mutually exclusive"
+                    field: "query_parameters"
+            Invalid Category:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "Invalid category"
+                    field: "query_parameters"
+            Invalid Domain:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "Invalid domain"
+                    field: "query_parameters"
+            Latest param is not true (case-insensitive):
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "Invalid value for latest"
+                    field: "query_parameters"
+            Invalid status:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "Invalid status"
+                    field: "query_parameters"
+            assessment_started_at used with latest or assessment_id:
+              value:
+                code: "RS-101"
+                message: "Invalid value for query string parameters"
+                culprits:
+                  - category: "filter parameters"
+                    message: "assessment_started_at can only be combined with domain"
+                    field: "query_parameters"
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'

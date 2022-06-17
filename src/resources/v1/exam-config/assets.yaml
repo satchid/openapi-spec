@@ -1,0 +1,57 @@
+post:
+  tags:
+    - exam config
+  summary: Create asset
+  description: Creates an asset and adds it to the exam-config table on DynamoDB.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            exam_code:
+              type: string
+              example: 'PSD_ABRIDGED_MOBILE'
+            name:
+              type: string
+              example: 'stimuli_chart.png'
+            type:
+              type: string
+              example: 'ASSET_IMAGE'
+            platform:
+              type: string
+              example: 'MOBILE'
+            language:
+              type: string
+              example: 'en'
+            configuration:
+              type: object
+              example: {
+                'location': {
+                  'bucket': 's3_bucket',
+                  'key': 'key'
+                }
+              }
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    '400':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/exams/errors/InvalidAssetInputError.yaml'
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized

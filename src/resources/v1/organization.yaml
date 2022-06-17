@@ -1,0 +1,43 @@
+get:
+  tags:
+    - admin
+  summary: Get Organization
+  operationId: getOrganization
+  description: By passing the organization name, you can retrieve the organization details. 
+  parameters:
+    - in: query
+      name: searchString
+      description: pass an optional search string for looking up inventory
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: search results matching criteria
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../schemas/OrganizationItem.yaml'
+    '400':
+      description: bad input parameter
+post:
+  tags:
+    - admin
+  summary: Create Organization
+  operationId: createOrganization
+  description: Creates an organization
+  responses:
+    '201':
+      description: 'Organization created'
+    '400':
+      description: 'Organization name must be unique'
+    '401':
+      description: 'Unauthorized (not currently according to existing implementation 400 is returned for unauthorised'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/OrganizationItem.yaml'
+    description: Organization to add

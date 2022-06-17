@@ -1,0 +1,30 @@
+title: Image pairs unguided phase
+allOf:
+  - $ref: './BasePhaseConfiguration.yaml'
+  - type: object
+    required:
+      - accepted_input_types
+      - tutorial_mode
+      - requires_perception_data
+      - resource_bundle
+      - display_seconds
+    properties:
+      accepted_input_types:
+        type: array
+        description: Indicates the input type for the trials.
+        items:
+          type: string
+          enum:
+            - VIDEO
+            - SELECTION
+            - KEYSTROKE
+      tutorial_mode:
+        type: boolean
+        description: "For this phase, it should be True to indicate it is the practice phase."
+      requires_perception_data:
+        type: boolean
+        description: "For this phase, it should be True to indicate we need to collect perception data and send to the backend."
+      display_seconds:
+        type: integer
+        description: Time (in seconds) that each trial will be displayed. This attribute can be overriden by each trial.
+        example: 5

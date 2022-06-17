@@ -1,0 +1,20 @@
+description: "Forbidden. return HTTP 403. It may happen when the user credential is not valid. This credential can be either username/password or an access token"
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+      properties:
+        fingerprint:
+          type: string
+          description: AWS request ID to make it easier to find the logs on the server side.
+          example: "caa74ba5-ba7e-4c46-9df5-e3d064682081"
+        code:
+          type: string
+          description: Error code.
+          example: "AUTH-001"
+        message:
+          type: string
+          description: Error message.
+          example: "Wrong email or password"

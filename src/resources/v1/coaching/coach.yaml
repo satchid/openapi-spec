@@ -1,0 +1,100 @@
+post:
+  tags:
+    - coaching
+  summary: Create coach
+  description: Convert an existing Neurotrack user into a Coach.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            freshworks_id:
+              type: string
+              example: 'fake_freshworks_id'
+  responses:
+    '200':
+      description: "Default"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/coaching/CoachData.yaml'
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Given Parameter not valid:
+              value:
+                code: "CO-101"
+                message: "given param not valid."
+                culprits:
+                  - category: "BAD_REQUEST"
+                    message: "Error retrieving user data: <exception>"
+                    field : "user_id"
+            Create Sendbird User error:
+              value:
+                code: "CO-103"
+                message: "Sendbird user creation error."
+                culprits:
+                  - category: "SENDBIRD_ERROR"
+                    message: "Error occurred with provisioning sendbird user: <exception>"
+                    field: "user_id"
+            Update Database Error:
+              value:
+                code: "E-528"
+                message: "Failed to put item in Database"
+            Increase number of clients Error:
+              value:
+                code: "E-536"
+                message: "An unexpected error occurred at the Database while updating the item"
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'
+
+delete:
+  tags:
+    - coaching
+  summary: Delete coach completely
+  description: Remove all coaching attributes from the user.
+  parameters:
+    - $ref: '../../../parameters/path/user_id.yaml'
+  responses:
+    '204':
+      description: "No Content"
+    '400': 
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          examples:
+            Delete Coach with Assigned Users:
+              value:
+                code: "CO-105"
+                message: "Can not delete a coach assigned to a user"
+                culprits:
+                  - category: "BAD_REQUEST"
+                    message: "Error retrieving user data: <exception>"
+                    field : "user_id"
+            Delete Sendbird User error:
+              value:
+                code: "CO-106"
+                message: "Sendbird user deletion error."
+                culprits:
+                  - category: "SENDBIRD_ERROR"
+                    message: "Error occurred with provisioning sendbird user: <exception>"
+                    field: "user_id"
+            Database Delete Operation Error:
+              value:
+                code: "E-539"
+                message: "An unexpected error occurred at the Database while deleting the item"
+            Clean Coaching Operation Error:
+              value:
+                code: "E-536"
+                message: "An unexpected error occurred at the Database while updating the item"
+    '401':
+      $ref: '../../../responses/401.yaml'
+    '404': 
+      $ref: '../../../responses/404.yaml'

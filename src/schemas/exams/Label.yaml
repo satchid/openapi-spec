@@ -1,0 +1,7 @@
+type: object
+required:
+  - text
+properties:
+  text:
+    type: string
+    description: Text for the label. It is subject to translation according to the Accept-Language parameter in the request header.

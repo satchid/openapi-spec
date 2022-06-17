@@ -1,0 +1,40 @@
+post:
+  tags:
+    - exam serving
+  summary: Create exam
+  description: >-
+    This endpoint let us upload the trial related videos.
+    We must invoke this endpoint before we send the JSON perception, since the output of the video endpoint is part of the JSON.
+  parameters:
+    - $ref: '../../../../parameters/path/user_id.yaml'
+    - $ref: '../../../../parameters/path/assessment_id.yaml'
+    - name: trial_id
+      required: true
+      in: path
+      schema:
+        type: string
+      description: UUID used to uniquely identify the Trial.
+  requestBody:
+    content:
+      video/mp4:
+        schema:
+          type: string
+          format: binary
+      video/webm:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '200':
+      description: "The response contains the file uploaded to the server."
+      content:
+        application/json:
+          schema:
+            $ref: '../../../../schemas/exams/UploadedFile.yaml'
+          examples: 
+            TrialVideo:
+              value: "users/my_fake_user_id/my_fake_assessment_id/my_fake_trial_id/linux_epoc.random_uuid.mp4"
+    '400': 
+      $ref: '../../../../responses/400.yaml'
+    '401':
+      $ref: '../../../../responses/401.yaml'

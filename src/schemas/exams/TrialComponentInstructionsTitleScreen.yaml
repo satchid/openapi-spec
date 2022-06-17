@@ -1,0 +1,39 @@
+title: Instructions title screen
+allOf:
+  - $ref: './BaseTrial.yaml'
+  - type: object
+    required:
+      - component
+      - component_data
+    properties:
+      component:
+        type: string
+        description: Instructions Title Screen Trial.
+        example: "instructions_title_screen"
+      component_data:
+        type: object
+        required:
+          - body
+          - footer
+        properties:
+          body:
+            type: object
+            required:
+              - headline
+              - content
+            properties:
+              image:
+                $ref: './Image.yaml'
+              headline:
+                $ref: './Label.yaml'
+              content:
+                $ref: './Label.yaml'
+          footer:
+            type: object
+            properties:
+              button:
+                $ref: './Button.yaml'
+          navigation:
+            type: array
+            items:
+              $ref: './NavigationEnum.yaml'

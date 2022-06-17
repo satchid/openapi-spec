@@ -1,0 +1,3 @@
+type: object
+additionalProperties: true
+description: When an error retrieving the policy info happens, we will just store whatever was the response.

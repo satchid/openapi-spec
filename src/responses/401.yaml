@@ -1,0 +1,20 @@
+description: "Unauthorized. return HTTP 401. In most case, it is required to refresh the token and pass a new access token in the new request."
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+      properties:
+        fingerprint:
+          type: string
+          description: AWS request ID to make it easier to find the logs on the server side.
+          example: "caa74ba5-ba7e-4c46-9df5-e3d064682081"
+        code:
+          type: string
+          description: Error code.
+          example: "AUTH-006"
+        message:
+          type: string
+          description: Error message.
+          example: "Unauthorized"

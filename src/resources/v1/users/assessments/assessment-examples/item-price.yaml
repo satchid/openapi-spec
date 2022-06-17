@@ -1,0 +1,254 @@
+value:
+  id: "Assessment-f071c49a-dd79-47a5-a98d-78c3231e510d"
+  user_id: "991e8a2f-9151-4853-bb1c-49b1095a7d00"
+  status: "NOT_STARTED"
+  type: "EXAM_PAIRED_ASSOCIATION"
+  subtype: "PAIRED_ITEM_PRICE_MOBILE"
+  base_media_url: "https://api.jp-neurotrack.io/v1/exam-media"
+  phases:
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "54197febf0c5d4b2a8623e59ce812493.zip"
+      version: "1.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              image:
+                filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_text_only"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+              - "NEXT"
+          assets: []
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_header_image"
+          component_data:
+            body:
+              image:
+                filename: "df9a3751d69e5e72dcff065ac57d661c.svg"
+            header:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            navigation:
+              - "CLOSE"
+              - "PREVIOUS"
+              - "NEXT"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+    - phase_display_type: "PAIRED_ITEM_PRICE_PHASE_GUIDED"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types:
+          - SELECTION
+        tutorial_mode: True
+        requires_perception_data: True
+        display_seconds: 4
+        resource_bundle: "54197febf0c5d4b2a8623e59ce812493.zip"
+      version: "1.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "one_image_one_label_horizontal"
+          component_data:
+            body:
+              leading_image:
+                filename: "be67b1e6f9a942b3a03219795cac72ef.svg"
+              price_label:
+                price_multiply_factor: "100"
+                currency_label: "¥"
+                text: "¥250"
+          assets:
+            - id: "Asset-383f06d9-248f-4fdf-b3ee-e5ba7ab57d79"
+              name: "broccoli.png"
+              filename: "be67b1e6f9a942b3a03219795cac72ef.svg"
+          trial_scoring_type: "target"
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "54197febf0c5d4b2a8623e59ce812493.zip"
+      version: "1.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              image:
+                filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_text_only"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation:
+              - "CLOSE"
+              - "NEXT"
+          assets: []
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_header_image_two_button"
+          component_data:
+            header:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            body:
+              image:
+                filename: "df9a3751d69e5e72dcff065ac57d661c.svg"
+            footer:
+              leading_button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "left"
+              trailing_button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "right"
+            navigation:
+              - "PREVIOUS"
+              - "NEXT"
+          assets:
+            - id: "Asset-54a3ce88-0fbb-470c-83d4-0b267ef9bad1"
+              name: "nt_cognitiveassessments-imagepairs-bg.svg"
+              filename: "12b57c01b4cf501cd2d0a9f12dc0b545.svg"
+    - phase_display_type: "PAIRED_ITEM_PRICE_PHASE_UNGUIDED"
+      phase_configuration:
+        component_data:
+          body:
+            subtitle:
+              text: "my translated text"
+          footer:
+            leading_button:
+              action: "selection"
+              style: "outline"
+              text: "my translated text"
+              value: "yes"
+            trailing_button:
+              action: "selection"
+              style: "outline"
+              text: "my translated text"
+              value: "no"
+        accepted_input_types:
+          - SELECTION
+        tutorial_mode: False
+        requires_perception_data: True
+        display_seconds: 4
+        resource_bundle: "54197febf0c5d4b2a8623e59ce812493.zip"
+      version: "1.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "one_image_one_label_two_buttons"
+          component_data:
+            body:
+              leading_image:
+                filename: "be67b1e6f9a942b3a03219795cac72ef.svg"
+              price_label:
+                price_multiply_factor: "100"
+                currency_label: "¥"
+                text: "¥250"
+          assets:
+            - id: "Asset-383f06d9-248f-4fdf-b3ee-e5ba7ab57d79"
+              name: "broccoli.png"
+              filename: "be67b1e6f9a942b3a03219795cac72ef.svg"
+          trial_scoring_type: "foil_two"
+    - phase_display_type: "INSTRUCTION"
+      phase_configuration:
+        component_data: {}
+        accepted_input_types: []
+        tutorial_mode: False
+        requires_perception_data: False
+        resource_bundle: "54197febf0c5d4b2a8623e59ce812493.zip"
+      version: "1.0.0"
+      trials:
+        - id: "Trial-03507cc2-c64e-40e8-ab20-a48467ab53c0"
+          exam_trial_id: "d5ea55f1-d4aa-4aba-8f95-565f6b255da4"
+          component: "instructions_title_screen"
+          component_data:
+            body:
+              headline:
+                text: "my translated text"
+              content:
+                text: "my translated text"
+            footer:
+              button:
+                action: "next"
+                style: "solid"
+                text: "my translated text"
+                value: "continue"
+            navigation: []
+          assets: []

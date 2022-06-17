@@ -1,0 +1,122 @@
+type: object
+properties:
+  "custom:api_url":
+    type: string
+    description: "Base domain to be used in the next API calls."
+    example: "api.jp-neurotrack.io"
+  birthdate:
+    type: string
+    description: "User's date of birth"
+    example: "1980-01-01"
+  "custom:content_root":
+    type: string
+    description: "Content Root URL for articles, FAQ and other content provided by Contentful."
+    example: "https://my.dev.neurotrack.com/en"
+  "custom:education":
+    type: string
+    description: "User's education level"
+    example: "BACHELORS_DEGREE"
+    enum:
+      - "0-6"
+      - "7-9"
+      - "10-11"
+      - "HIGHSCHOOL_DEGREE"
+      - "SOME_COLLEGE"
+      - "ASSOCIATES_DEGREE"
+      - "BACHELORS_DEGREE"
+      - "MASTERS_DEGREE"
+      - "PROFESSIONAL_DEGREE"
+      - "DOCTORATE_DEGREE"
+  email:
+    type: string
+    description: "User's email"
+    example: "user@example.com"
+  "custom:email_domain":
+    type: string
+    description: "Only the domain part of user's email"
+    example: "example.com"
+  "custom:ethnicity":
+    type: string
+    description: "User's ethnicity"
+    example: "asian"
+    enum:
+      - "american_indian"
+      - "asian"
+      - "black"
+      - "hispanic"
+      - "pacific_islander"
+      - "white"
+  family_name:
+    type: string
+    description: "User's family name"
+    example: "Doe"
+  gender:
+    type: string
+    description: "User's gender"
+    example: "male"
+  given_name:
+    type: string
+    description: "User's given name"
+    example: "John"
+  "custom:is_test_user":
+    type: string
+    description: "The string 'true' when email domain is one of Neurotrack's internal test domains. The test domains are: ntqa.io, ntqa.com, nt.io, neurotrack.com, neurotrack.io, test.io"
+    example: "true"
+  locale:
+    type: string
+    description: "User's preferred language"
+    example: "en"
+  "custom:organization":
+    type: string
+    description: "User's organization"
+    example: "japan_01"
+  "cognito:username":
+    type: string
+    description: "User UUID"
+    example: "499aab8a-0a8d-4154-9bf6-3fc1f8888bf6"
+  "http://neurotrack.com/organization":
+    type: string
+    description: "Organization that issued the token. It is always 'neurotrack'. If you need the user's organization, use custom:organization"
+    example: "neurotrack"
+  "http://neurotrack.com/uuid":
+    type: string
+    description: "Unique identifier for the user who logged in. It matches the 'cognito:username' and both refer to the user UUID on the dynamoDB table"
+    example: "84b231ef-24d1-499b-a753-9c533e2d6d80"
+  "http://neurotrack.com/role":
+    type: string
+    description: "User role in the platform"
+    example: "customer"
+    enum:
+      - customer
+      - coach
+      - support
+      - power_support
+      - admin
+  sub:
+    type: string
+    description: "The sub claim is a unique identifier (UUID) for the authenticated user. It is not the same as the user name."
+    example: "b2bec1d6-b29b-4373-b2aa-8a5bd14f8df1"
+  token_use:
+    type: string
+    description: "The token_use claim describes the intended purpose of this token. Its value is always access in the case of the access token."
+    example: "id"
+  auth_time:
+    type: number
+    description: "The auth_time claim contains the time when the authentication occurred. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format. On refreshes, it represents the time when the original authentication occurred, not the time when the token was issued."
+    example: 1633445008
+  iss:
+    type: string
+    description: "Issuer of the token. Identifies the User Pool that created the token"
+    example: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_1hxwqLmbh"
+  exp:
+    type: number
+    description: "Expiration time. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format"
+    example: 1633445308
+  iat:
+    type: number
+    description: "Issued At time. Its value is a JSON number that represents the number of seconds from 1970-01-01T0:0:0Z as measured in UTC format"
+    example: 1633445009
+  jti:
+    type: string
+    description: "The jti claim is the unique identifier of the JWT."
+    example: "b3f8a4ab-9406-41b8-8e0f-dfd204d68339"

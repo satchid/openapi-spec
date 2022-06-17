@@ -1,0 +1,31 @@
+type: object
+required:
+  - id
+  - exam_trial_id
+properties:
+  id:
+    type: string
+    description: Unique identifier for a Trial
+    example: "Trial-738d3277-c92b-49cd-b065-55524602ae91"
+  exam_trial_id:
+    type: string
+    description: Unique identifier for an Exam Trial. A trial can be assigned to multiple exams, so this ID is unique to the link between the Exam and the trial.
+    example: "b0ce833c-13ce-4c78-8724-29997b2f588d"
+  assets:
+    type: array
+    description: List of assets used by that trial
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for an Asset
+          example: "Asset-0508d5b6-4573-4643-8445-53d1350eea41"
+        name:
+          type: string
+          description: Human readable name for the asset. In some cases, this is used on Lokalise to allow the usage of different assets according to the language.
+          example: nt_cognitiveassessments-lightreaction-bg.png
+        filename:
+          type: string
+          description: Name of the file stored in the server
+          example: f3b965f84f9380aad58835f83b936917.png

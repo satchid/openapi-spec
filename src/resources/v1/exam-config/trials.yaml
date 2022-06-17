@@ -1,0 +1,69 @@
+post:
+  tags:
+    - exam config
+  summary: Create trial
+  description: Creates a trial and adds it to the exam-config table on DynamoDB.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            exam_code:
+              type: string
+              example: 'PSD_ABRIDGED_MOBILE'
+            name:
+              type: string
+              example: 'stimuli_chart.png'
+            component:
+              type: string
+              example: 'instructions_title_screen'
+            component_data:
+              type: object
+              example: {
+                'body': {
+                  'image': {
+                    'filename': 'f3b965f84f9380aad58835f83b936917.png'
+                  }
+                },
+                'header': {
+                  'headline': {
+                    'text': 'sample_exam_title'
+                  },
+                  'content': {
+                      'text': 'sample_exam_intro_1_paragraph'
+                  }
+                },
+                'navigation': ['close'],
+                }
+    
+            asset_codes:
+              type: object
+              example: ["0083ea57c38767daf7e9041936fc4c49.png"]
+            platform:
+              type: string
+              example: 'MOBILE'
+
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    '400':
+      description: "Bad request. return HTTP 400"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/exams/errors/InvalidTrialInputError.yaml'
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized

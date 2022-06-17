@@ -1,0 +1,5 @@
+type: string
+enum:
+  - COGNITIVE
+  - LIFESTYLE
+example: COGNITIVE

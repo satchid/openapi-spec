@@ -1,0 +1,53 @@
+put:
+  tags:
+    - exam config
+  summary: Update exam and sets
+  description: Update an exam and its exam sets
+  parameters:
+    - $ref: '../../../parameters/path/exam_id.yaml'
+    
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/exams/Exam.yaml'
+            
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized
+                  
+delete:
+  tags:
+    - exam config
+  summary: Delete exam
+  description: Creates an exam and adds it to the exam-config table on DynamoDB.
+  parameters:
+    - $ref: '../../../parameters/path/exam_id.yaml'
+
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              type: object
+    
+    '401':
+      description: "Unauthorized request."
+      content:
+        application/json:
+          schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Unauthorized

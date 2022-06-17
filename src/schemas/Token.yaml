@@ -1,0 +1,20 @@
+type: object
+required: [access_token,id_token,refresh_token,expires_in]
+properties:
+  access_token:
+    type: string
+    description: "Access token that should be used in the other endpoints. This endpoint is short lived, generally valid for some minutes."
+  id_token:
+    type: string
+    description: "Id token that contains information about the user identification such as api_url, organization, is_test_user."
+  refresh_token:
+    type: string
+    description: "Refresh token that should be used to get a new access token. This endpoint is long lived, generally valid for some days. It should be stored securely."
+  expires_in:
+    type: integer
+    description: "How long, in seconds, the access token is valid."
+    example: 300
+  token_type:
+    type: string
+    description: "Token type to be used as a prefix for the access token in the authenticated requests. It should be always 'bearer'"
+    example: "bearer"

@@ -1,0 +1,32 @@
+post:
+  tags:
+    - user
+  summary: Powerful user search and filter
+  description: Send a POST request to Elasticsearch to find a user in the users table. An example will be provided here, but for advanced cases use guidances here as to how to form your payload; https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            query: 
+              type: object
+              properties: 
+                multi_match: 
+                  type: object
+                  properties: 
+                    query: 
+                      type: string
+                      example: Gurm
+                    fields: 
+                      type: array
+                      items: 
+                        type: string
+                        example: family_name
+  responses:
+    '200':
+      description: "Default"
+      content:
+        application/json:
+          schema:
+            $ref: '../../../schemas/ElasticSearchHits.yaml'

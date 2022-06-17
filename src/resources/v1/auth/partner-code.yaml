@@ -1,0 +1,21 @@
+get:
+  tags:
+    - auth
+  summary: Check partner code
+  description: Validates that a partner code (access code) is valid and available for registrations
+  parameters:
+    - in: path
+      name: code
+      required: true
+      schema:
+        type: string
+        
+  responses:
+    '200':
+      description: "Successful response"
+      content:
+        application/json:
+          schema:
+              $ref: '../../../schemas/auth/PartnerCode.yaml'
+    '404':
+      $ref: '../../../responses/404.yaml'

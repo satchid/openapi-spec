@@ -1,0 +1,37 @@
+get:
+  tags:
+    - medical integration
+  summary: Lookup user
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: integration-type
+      in: path
+      description: "The type of name of third party integration (e.g. ATHENA)"
+      required: true
+      schema:
+        type: string
+    - name: external-user-id
+      in: path
+      description: "The user id provided by third party service. In Athena, it is the patientid"
+      required: true
+      schema:
+        type: integer
+  description: >-
+    this api intends to work as a translator between external user ids (like patient_id at Athena) into neurotrack user id
+  responses:
+    '200':
+      description: "The user was found and its id is given."
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+                example: "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6"
+    '400':
+      description: "The user was not found"
+      content:
+        application/json:
+          schema:
+            type: object
