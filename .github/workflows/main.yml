@@ -15,12 +15,12 @@ jobs:
           node-version: '16.x'
       - name: Build
         env:
-          ntapi: ${{ secrets.NTAPI }}
+          ntapi: ${{ secrets.API }}
         run: |
           npm ci
           npm run build
           npm run build-deref
-          npx pagecrypt ./apidoc.html _build/ntapi.html ${{ env.ntapi }}
+          npx pagecrypt ./apidoc.html _build/api.html ${{ env.api }}
       - name: Deploy to GitHub Pages
         run : npm run deploy
         env:
