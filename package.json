@@ -1,10 +1,11 @@
 {
-  "name": "neurotrack-apispec",
+  "name": "openapi-spec",
   "version": "0.0.1",
   "description": "Multi-file API Spec.",
   "main": "index.js",
   "scripts": {
-    "build": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi.yaml --type yaml",
+    "build": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi.json",
+    "build-yaml": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi.yaml --type yaml",
     "build-deref": "swagger-cli bundle src/openapi.yaml --outfile _build/openapi-dereferenced.yaml --type yaml --dereference",
     "test": "npm run build && spectral lint _build/openapi.yaml",
     "preview": "npm run build && npx @redocly/openapi-cli preview-docs _build/openapi.yaml",
